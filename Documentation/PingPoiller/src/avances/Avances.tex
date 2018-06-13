@@ -1,0 +1,76 @@
+\section{Desarrollo}
+En este capitulo de muestran los pasos necesarios para el desarrollo del ping poller.
+
+% =========================================================================================
+
+\subsection{Configuración del entorno}
+
+\subsubsection{Objetivo}
+Instalar las herramientas necesarias para el desarrollo del ping poller.
+
+\subsubsection{Descripción}
+\begin{itemize}
+	\item Instalar python 2.7.9\\
+		\begin{lstlisting}[language=bash]
+			#> apt-get update
+			#> apt-get install gcc python=2.7.9-1 python-pip librrd-dev libpython-dev
+		\end{lstlisting}
+	\item Instalar rrdtool.\\
+		\begin{lstlisting}[language=bash]
+			#> pip install rrdtool
+		\end{lstlisting}
+\end{itemize}
+
+\newpage
+\begin{prueba}[{\bf Sistema:} Topología de red, {\bf Módulo:} Ping Poller]{P01-P1}{rrdtool instalado}
+	\Pitem{Verificar paquetes instalados}
+	\pregunta{¿Se instaló python 2.7.9?}{X}{}{Ninguna.}
+	\pregunta{¿Se instaló pip?}{X}{}{Ninguna.}
+	\pregunta{¿Se instaló rrdtool?}{X}{}{Me marcaba errores de haders y error en gcc. La solución fue reinstalar gcc.}
+\end{prueba}
+
+% =========================================================================================
+
+\subsection{Realización del programa Ping Poller}
+
+\subsubsection{Objetivo}
+Realizar un programa en python que mande ping's a los dispositivos conectados en la red, y en caso de que la respuesta del dispositivo sobrepase el tiempo establecido, notificarlo via emal.
+
+\subsubsection{Descripción}
+\begin{itemize}
+	\item {\bf ping.py} Programa encargado de realizar un ping a una ip específica y devuelve como resultado el tiempo de respuesta.\\
+	\begin{lstlisting}[language=python]
+		import subprocess, re
+		
+		def ping(hostname):
+			ping_response = subprocess.Popen(
+				['ping', '-c1', '-w1', hostname],
+				stdout=subprocess.PIPE
+			).stdout.read()
+			
+			# Verify packet recived.
+			packets_recived = int(re.search(
+				r'([\w|\s|.|\(|\)|\-|:|,\|=|\n]*)([0|1])( received)', ping_response)
+			.group(2))
+			
+			if (packets_recived == 1):
+				time = int(re.search(
+					r'([\w|\s|.|\(|\)|\-|:|,\|=|\n]*)(time=)([0-9]*)( ms)', ping_response)
+				.group(3))
+				return time
+			else:
+				return -1
+	\end{lstlisting}
+	\item Instalar rrdtool.\\
+	\begin{lstlisting}[language=bash]
+	#> pip install rrdtool
+	\end{lstlisting}
+\end{itemize}
+
+\newpage
+\begin{prueba}[{\bf Sistema:} Topología de red, {\bf Módulo:} Ping Poller]{P01-P1}{rrdtool instalado}
+	\Pitem{Verificar paquetes instalados}
+	\pregunta{¿Se instaló python 2.7.9?}{X}{}{Ninguna.}
+	\pregunta{¿Se instaló pip?}{X}{}{Ninguna.}
+	\pregunta{¿Se instaló rrdtool?}{X}{}{Me marcaba errores de haders y error en gcc. La solución fue reinstalar gcc.}
+\end{prueba}

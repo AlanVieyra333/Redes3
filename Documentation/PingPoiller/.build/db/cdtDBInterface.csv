@@ -1,0 +1,12 @@
+id,name
+AS-IU1,Pantalla principal del sistema.
+AS-IU2,Pantalla de registro de usuarios.
+AS-IU3,Pantalla de inicio de sesi\IeC {\'o}n.
+AS-IU4,Solicitar restauraci\IeC {\'o}n de contrase\IeC {\~n}a.
+AS-IU4.1,Notificaci\IeC {\'o}n por correo.
+AS-IU4.2,Verificar correo.
+AS-IU4.3,Actualizar contrase\IeC {\~n}a.
+AS-IU5,Pantalla de editar datos personales.
+GV-IU1,Pantalla de solicitud de vuelo.
+GV-IU2,Pantalla de monitoreo de vuelo.
+GH-IU1,Pantalla de historial de vuelos.

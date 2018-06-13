@@ -1,0 +1,91 @@
+%===============================================================================
+% Sección: Diagramas de casos de uso.
+%
+
+En la presente sección se mostrarán los casos de uso divididos por módulo dentro 
+de cada subsistema: Vuelo autónomo y Monitoreo. En la figura 
+\ref{img:dis:diagramas:cu:general} se muestra de 
+forma general la interacción entre cada actor: \refElem{Cliente}, \refElem{Drone};
+con su respectiva interacción con los subsistemas. Posteriormente, se especificará
+cada módulo para mostrar las acciones opcionales y obligatorias que realizará cada
+actor.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=.7\textwidth]
+		{images/doc/CU/img_cu_general}	
+		\caption{Diagrama de casos de uso general.}
+		\label{img:dis:diagramas:cu:general}
+	\end{center}
+\end{figure}
+
+La figura \ref{img:dis:diagramas:cu:proximidad:control:movimientos} muestra los 
+casos de uso para el módulo de Proximidad, en el cual el drone podrá detectar la 
+existencia de un objeto cercano a él, y el módulo de Control de Movimientos, en 
+el cual el drone podrá manipular la dirección de sus movimientos.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=.7\textwidth]
+		{images/doc/CU/img_cu_proximidad_controlmovs}
+		\caption{Diagrama de casos de uso para el módulo de Proximidad y 
+			el módulo de Control de Movimientos.}
+		\label{img:dis:diagramas:cu:proximidad:control:movimientos}
+	\end{center}
+\end{figure}
+
+La figura \ref{img:dis:diagrama:cu:acceso:sistema} muestra los casos de uso para 
+el módulo de Acceso al Sistema, en el cual el cliente podrá darse de alta y 
+acceder al sistema.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=.7\textwidth]
+		{images/doc/CU/img_cu_acceso_sistema}
+		\caption{Diagrama de casos de uso para el módulo de Acceso al 
+			Sistema.}
+		\label{img:dis:diagrama:cu:acceso:sistema}
+	\end{center}
+\end{figure}
+
+La figura \ref{img:dis:diagrama:cu:comuniacion:drone} muestra los casos de uso 
+para el módulo de Comunicación con Drone, en el cual el drone enviará 
+información relevante del vuelo.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=.7\textwidth]
+		{images/doc/CU/img_cu_comunicacion_drone}
+		\caption{Diagrama de casos de uso para el módulo de Comunicación 
+		con Drone.}
+		\label{img:dis:diagrama:cu:comuniacion:drone}
+	\end{center}
+\end{figure}
+
+La figura \ref{img:dis:diagrama:cu:gestion:vuelo} muestra los casos de uso para 
+el módulo de Gestión de Vuelo, en el cual el cliente podrá solicitar un vuelo, 
+darle seguimiento ubicación al vuelo en ejecución, o bien, cancelarlo.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=.7\textwidth]
+		{images/doc/CU/img_cu_gestion_vuelo}
+		\caption{Diagrama de casos de uso para el módulo de Gestión de 
+		Vuelo.}
+		\label{img:dis:diagrama:cu:gestion:vuelo}
+	\end{center}
+\end{figure}
+
+La figura \ref{img:dis:diagrama:cu:gestion:historial} muestra los casos de uso 
+para el módulo de Gestión de Historial, en el cual el cliente consultar y 
+eliminar el registro de todos los vuelos que ha solicitado.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=.7\textwidth]
+		{images/doc/CU/img_cu_gestion_historial}
+		\caption{Diagrama de casos de uso para el módulo de Gestión de 
+		Historial.}
+		\label{img:dis:diagrama:cu:gestion:historial}
+	\end{center}
+\end{figure}

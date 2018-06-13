@@ -1,0 +1,19 @@
+id,name
+PR-CU1,Recibir informaci\IeC {\'o}n del sensor de proximidad
+CM-CU1,Realizar movimiento
+CM-CU1.1,Mover hacia arriba
+CM-CU1.2,Mover hacia abajo
+CM-CU1.3,Mover hacia adelante
+CM-CU1.4,Mover hacia atr\IeC {\'a}s
+CM-CU1.5,Girar direcci\IeC {\'o}n izquierda
+CM-CU1.6,Girar direcci\IeC {\'o}n derecha
+CM-CU1.7,Detener movimiento
+CM-CU2,Evadir obst\IeC {\'a}culo
+AS-CU1,Registrar en el sistema
+AS-CU2,Iniciar sesi\IeC {\'o}n
+AS-CU2.1,Restablecer contrase\IeC {\~n}a
+AS-CU3.2,Editar perfil
+AS-CU3.2,Editar perfil
+CD-CU1,Enviar informaci\IeC {\'o}n
+GV-CU1,Gestionar vuelo
+GH-CU1,Gestionar historial

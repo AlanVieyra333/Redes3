@@ -1,0 +1,163 @@
+% Indice de trayectorias: Gestión de historial.
+% Autor(es): Landa Aguirre Rafael
+% 	     Alan Vieyra Fernando
+%	     Olvera Pérez Víctor David
+% Fecha: 04 - May - 2018
+%
+
+\begin{UseCase}{GH-CU1}{Gestionar historial}{
+		Permite al \refElem{Cliente} puede gestionar el historial de 
+		solicitudes que a realizado en un periodo de tiempo, permitiendo
+		visualización individual de cada vuelo, eliminación de 
+		solicitudes realizadas previamente.
+	}
+	\UCccitem{Versión}{0.1}
+	\UCccsection{Datos para el control Interno}
+	\UCccitem{Elaboró}{
+		\begin{Titemize}
+			\Titem Alan Fernando Rincón Vieyra.
+			\Titem Rafael Landa Aguirre.
+		\end{Titemize}
+	}
+	\UCccitem{Revisó}{----}
+	\UCccitem{Estatus}{Revisado.}
+	\UCccitem{Fecha del último estatus}{16 de Mayo de 2018}
+	\UCccitem{Observaciones}{Ninguna.}
+	\UCsection{Atributos}
+	% V.0.1.
+	\UCitem{Actor}{\refElem{Cliente}.}
+	% V.0.1.
+	\UCitem{Propósito}{
+		Gestionar el historial de \refElem{Vuelo} de solicitudes realizadas previamente, permitiendo realizar las siguientes acciones: \cdtEmpty
+		
+		\begin{itemize}
+			\item Consultar lista de solicitudes por usuario.
+			\item Consultar por solicitud.
+			\item Eliminar registro de la lista de solicitudes.
+		\end{itemize}
+	}
+	% V.0.1.
+	\UCitem{Entradas}{%
+		Ninguno.	
+	}
+	% V.0.1.
+	\UCitem{Origen}{%
+		\begin{Titemize}
+			\Titem \ioSeleccionar
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Salidas}{%
+		\begin{Titemize}
+			\Titem Lista de solicitudes de \refElem{Vuelo} organizadas por fecha desde las más recientes.
+			\Titem \refIdElem{MSG3}
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Destino}{Pantalla.}
+	% V.0.1.
+	\UCitem{Precondiciones}{
+		\begin{Titemize}
+			\Titem Existen solicitudes de vuelo previemente 
+			realizadas.
+			\Titem Haber iniciado una nueva sesión dentro de la 
+			aplicación.
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Postcondiciones}{%
+		\begin{Titemize}
+			\Titem Mostrar lista de solicitudes.
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Reglas de Negocio}{%
+		\begin{Titemize}
+			\Titem \refIdElem{RN-MON-N08}.
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Errores}{Ninguno.
+		%\begin{Titemize}
+		%	\Titem \UCerr{Uno}{Cuando no existen elementos o 
+		%	registros,}{el sistema muestra \refIdElem{MSG3} con el 
+		%	siguiente parámetro: $ELEMENTO:$ 'no hay registros de 
+		%	solicitudes de vuelo'.}
+		%\end{Titemize}				
+	}
+	% V.0.1.
+	\UCitem{Viene de}{Ninguno.}
+	% V.0.1.
+	\UCitem{Disparadores}{%
+		\begin{Titemize}
+			\Titem Requiere consultar el histórico de registros de 
+			vuelo.
+			\Titem Requiere visualizar información de cada solicitud 
+			que haya realizado.
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Condiciones de Término}{
+		Hasta que el usuario termine su sesión activa.
+	}
+	% V.0.1.
+	\UCitem{Efectos Colaterales}{Ninguno.}
+	\UCitem{Datos sensibles}{Ninguno.}
+\end{UseCase}
+
+
+%Trayectoria Principal : Happy Path
+
+\begin{UCtrayectoria}
+	% V.0.1.
+	\UCpaso [\UCactor] Presiona la pestaña o botón 
+	\IUbutton{Ver Historial de vuelos} del menú principal.
+	% V.0.1.
+	\UCpaso Muestra la pantalla \refIdElem{GH-IU1}.
+	% V.0.1.
+	\UCpaso \label{GH_CU1:opcion1} Consultar registros de vuelos en base de 
+	datos. \refTray{A}
+	% V.0.1.
+	\UCpaso Mostrar lista de los resultados obtenidos desde base de datos.
+	% V.0.1.
+	\UCpaso En caso de que el \refElem{Cliente} requiera visualizar o 
+	consultar una solicitud, ver \textbf{GH-CU11}.
+\end{UCtrayectoria}
+
+
+%-------------------------- Trayectoria Alternativa A ---------------------------------
+
+\begin{UCtrayectoriaA}{A}{No existen elementos disponibles}
+	% V.0.1 TODO.
+	\UCpaso Muestra el mensaje \refIdElem{MSG3}, con los siguientes 
+	parámetros:
+	\begin{itemize}
+		\item $ELEMENTOS:$ 'solicitudes registradas'
+	\end{itemize}
+	% V.0.1 TODO.
+	\UCpaso Continúa en el paso \ref{GH_CU1:opcion1}  de la trayectoria 
+	principal.
+\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa F --------------------------------- 
+
+%\begin{UCtrayectoriaA}[Termina caso de uso]{F}{Se requiere Cancelar la operación}
+	% V.0.1 TODO.
+%	\UCpaso [\UCactor] 	Presiona el botón \IUbutton{Cancelar} de la pantalla \refIdElem{IN-DAE-UI2.1}.
+	% V.0.1 TODO.
+%	\UCpaso Muestra la pantalla \refIdElem{IN-DAE-UI2} o \refIdElem{IN-DAE-UI2a} 
+%\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa G --------------------------------- 
+
+%\begin{UCtrayectoriaA}{G}{Se requiere agregar una Unidad Académica}
+	% V.0.1 TODO.
+%	\UCpaso [\UCactor]  Selecciona el acrónimo de Unidad Académica que se requiere agregar a la asociación del calendario. 
+	% V.0.1 TODO.
+%	\UCpaso Sigue en el paso \ref{IN-DAE-CU2.1:sel}  de la trayectoria principal.
+%\end{UCtrayectoriaA}
+
+
+%\subsubsection{Puntos de extensión}
+
+%\UCExtensionPoint{Gestionar Calendario Escolar}{El actor requiere Gestionar Calendario Escolar}{ Paso \ref{DAE-IN-CU1:acp} de la Trayectoria Principal}{\refIdElem{IN-DAE-CU2}}

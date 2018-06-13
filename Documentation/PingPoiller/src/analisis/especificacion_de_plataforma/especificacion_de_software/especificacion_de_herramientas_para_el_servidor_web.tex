@@ -1,0 +1,40 @@
+%===================== Especificación de herramientas para el servidor web ===========================
+
+\subsubsection{Especificación de herramientas para el servidor web}
+
+Para montar la aplicación web en el servidor se hará uso de Apache con compatibilidad WSGI que nos permite tener la compatibilidad con el marco de desarrollo Django. También cuenta con algunas ventajas respecto a otros servidores, como se muestra en la tabla \ref{tabla:servidores-web}.
+
+\begin{table}[H]
+	\centering
+	\caption{Comparación de servidores web.}
+	\label{tabla:servidores-web}
+	\begin{tabular}{|m{3cm}|c|c|c|}
+		\hline
+		\centering\textbf{Nombre} &
+		\textbf{Popularidad} &
+		\textbf{Facilidad de uso} &
+		\textbf{Costo}
+		\\ \hline
+		Nginx &
+		Alta &
+		Media &
+		Ninguno
+		\\ \hline
+		\rowcolor{colorGrisClaro}
+		Apache &
+		Muy alta &
+		Media &
+		Ninguno
+		\\ \hline
+		Internet Information Services (IIS) &
+		Baja &
+		Alta &
+		Ninguno
+		\\ \hline
+		Google Web Server &
+		Alta &
+		Alta &
+		Ninguno
+		\\ \hline
+	\end{tabular}
+\end{table}

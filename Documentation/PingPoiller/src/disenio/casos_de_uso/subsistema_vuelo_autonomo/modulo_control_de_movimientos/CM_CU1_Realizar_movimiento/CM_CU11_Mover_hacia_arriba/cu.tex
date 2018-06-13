@@ -1,0 +1,127 @@
+% Trayectorias de Caso de uso: Mover hacia arriba.
+% Autor(es): Landa Aguirre Rafael
+% 	     Alan Vieyra Fernando
+%	     Olvera Pérez Víctor David
+% Fecha: 04 - May - 2018
+%
+
+\begin{UseCase}{CM-CU1.1}{Mover hacia arriba}{
+		Permite al \refElem{Drone} moverse en dirección hacia arriba, en 
+caso de detectar un obstáculo o comenzar con el despegue.
+	}
+	\UCccitem{Versión}{0.1}
+	\UCccsection{Datos para el control Interno}
+	\UCccitem{Elaboró}{Rafael Landa Aguirre}
+	\UCccitem{Supervisó}{-----}
+	\UCccitem{Estatus}{\TODO[Por revisar]}
+	\UCccitem{Fecha del último estatus}{09 de Mayo de 2018}
+	\UCccitem{Observaciones}{\TODO[Por revisar]}
+	\UCsection{Atributos}
+	% V.0.1.
+	\UCitem{Actor}{\refElem{Drone}.}
+	% V.0.1.
+	\UCitem{Propósito}{Realizar el control del movimiento del 
+			\refElem{Drone} en dirección hacia arriba, con el fin de 
+			evitar un obstáculo o para empezar su despegue de vuelo.
+	}
+	% V.0.1.
+	\UCitem{Entradas}{Ninguno.}
+	% V.0.1.
+	\UCitem{Origen}{Ninguno.}
+	% V.0.1.
+	\UCitem{Salidas}{Ninguno.}
+	% V.0.1.
+	\UCitem{Destino}{Ninguno}
+	% V.0.1.
+	\UCitem{Precondiciones}{%
+		\begin{Titemize}
+			\Titem Estado de encendido.
+			\Titem Exista conexión con el módulo de proximidad.
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Postcondiciones}{Realizar el movimiento del \refElem{Drone} en 
+			dirección hacia arriba.}
+	% V.0.1.
+	\UCitem{Reglas de Negocio}{Ninguno.}
+	% V.0.1.
+	\UCitem{Errores}{%
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{Cuando no existe conexión con el 
+			sensor,}{el \refElem{Drone} responderá con un 
+			aterrizaje de precaución.}
+		\end{Titemize}				
+	}
+	% V.0.1.
+	\UCitem{Viene de}{\refIdElem{CM-CU1}}
+	% V.0.1.
+	\UCitem{Disparadores}{%
+		\begin{Titemize}
+			\Titem Requiere de movimiento hacia arriba para esquivar 
+			un obstáculo en caso de encontrarlo por debajo del 
+			\refElem{Drone}.
+			\Titem Requiere de movimiento para llegar a su punto 
+			destino.
+		\end{Titemize}
+	} 
+	% V.0.1.
+	\UCitem{Condiciones de Término}{%
+		Hasta que el drone detecte un obstáculo en la dirección de su 
+		movimiento.
+	}
+	% V.0.1.
+	\UCitem{Efectos Colaterales}{No pueda complir con el objetivo de llegar 
+		a su punto destino.
+	}
+	\UCitem{Datos sensibles}{Ninguno.}
+\end{UseCase}
+
+
+%Trayectoria Principal : Happy Path
+
+\begin{UCtrayectoria}
+	% V.0.1.
+	\UCpaso [\UCactor] Detectar comunicación con el módulo de proximidad. 
+		\refErr{Uno}
+	% V.0.1.
+	\UCpaso Obtener estado de PWM de movimiento vertical (yaw), movimiento 
+	horizontal adelante (pitch), movimiento horizontal lateral (roll), 
+	y acelerador (throttle).
+	% V.0.1.
+	\UCpaso Incrementar unitariamente estado de PWM para el acelerador.
+	% V.0.1.
+	\UCpaso Detectar si existe un objeto, ver \refIdElem{CM-CU1.7}. Termina 
+	caso de uso. En caso de no existir proseguir al paso 2.
+\end{UCtrayectoria}
+
+
+%-------------------------- Trayectoria Alternativa A ---------------------------------
+
+%\begin{UCtrayectoriaA}{A}{Se requiere seleccionar todas las unidades académicas }
+	% V.0.1 TODO.
+%	\UCpaso [\UCactor] 	Presiona el botón \IUbutton{Seleccionar Todo} de la pantalla \refIdElem{IN-DAE-UI2.1}.
+	% V.0.1 TODO.
+%	\UCpaso Continúa en el paso \ref{IN-DAE-CU2.1:sel}  de la trayectoria principal.
+%\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa F --------------------------------- 
+
+%\begin{UCtrayectoriaA}[Termina caso de uso]{F}{Se requiere Cancelar la operación}
+	% V.0.1 TODO.
+%	\UCpaso [\UCactor] 	Presiona el botón \IUbutton{Cancelar} de la pantalla \refIdElem{IN-DAE-UI2.1}.
+	% V.0.1 TODO.
+%	\UCpaso Muestra la pantalla \refIdElem{IN-DAE-UI2} o \refIdElem{IN-DAE-UI2a} 
+%\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa G --------------------------------- 
+
+%\begin{UCtrayectoriaA}{G}{Se requiere agregar una Unidad Académica}
+	% V.0.1 TODO.
+%	\UCpaso [\UCactor]  Selecciona el acrónimo de Unidad Académica que se requiere agregar a la asociación del calendario. 
+	% V.0.1 TODO.
+%	\UCpaso Sigue en el paso \ref{IN-DAE-CU2.1:sel}  de la trayectoria principal.
+%\end{UCtrayectoriaA}
+
+%\subsubsection{Puntos de extensión}
+
+%\UCExtensionPoint{Gestionar Calendario Escolar}{El actor requiere Gestionar Calendario Escolar}{ Paso \ref{DAE-IN-CU1:acp} de la Trayectoria Principal}{\refIdElem{IN-DAE-CU2}}

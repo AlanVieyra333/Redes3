@@ -1,0 +1,9 @@
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Objetivo}{chapter.1}% 2
+\BOOKMARK [0][-]{chapter.2}{An\341lisis y Dise\361o}{}% 3
+\BOOKMARK [1][-]{section.2.1}{Arquitectura propuesta}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{Especificaci\363n de plataforma}{chapter.2}% 5
+\BOOKMARK [0][-]{chapter.3}{Desarrollo e implementaci\363n}{}% 6
+\BOOKMARK [1][-]{section.3.1}{Desarrollo}{chapter.3}% 7
+\BOOKMARK [2][-]{subsection.3.1.1}{Configuraci\363n del entorno}{section.3.1}% 8
+\BOOKMARK [2][-]{subsection.3.1.2}{Realizaci\363n del programa Ping Poller}{section.3.1}% 9

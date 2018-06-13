@@ -1,0 +1,45 @@
+id,name
+Usuario,Usuario
+Usuario.nombreUsuario,Nombre de usuario
+Usuario.contrasenia,Contrase\IeC {\~n}a
+Cliente,Cliente
+Cliente.nombre,Nombre
+Cliente.correoElectronico,Correo electr\IeC {\'o}nico
+Vuelo,Vuelo
+Vuelo.id,Id
+Vuelo.fecha,Fecha
+Vuelo.hora,Hora
+Vuelo.destino,Destino
+Vuelo.ruta,Ruta
+Drone,Drone
+Drone.posicion,Posicion
+Drone.altura,Altura
+Drone.nivelBateria,Nivel de Bater\IeC {\'\i }a
+Drone.velocidad,Velocidad
+Drone.orientacion,Orientacion
+Drone.estado,Estado
+PosicionGeografica,PosicionGeografica
+PosicionGeografica.latitud,Latitud
+PosicionGeografica.longitud,longitud
+Orientacion,Orientacion
+Orientacion.x,X
+Orientacion.y,Y
+Orientacion.z,Z
+RN-VA-N01,C\IeC {\'a}lculo de distancia sensor de proximidad
+RN-MON-N01,Datos necesarios para el registro de usuarios
+RN-MON-N02,Nombre v\IeC {\'a}lido
+RN-MON-N03,Nombre de usuario v\IeC {\'a}lido
+RN-MON-N04,Correo v\IeC {\'a}lido
+RN-MON-N05,Contrase\IeC {\~n}a v\IeC {\'a}lida
+RN-MON-N06,Coordenadas de vuelo v\IeC {\'a}lidas
+RN-MON-N07,Informaci\IeC {\'o}n del drone
+RN-MON-N08,Datos de historial de vuelo
+RN-MON-N09,Calcular distancia a recorrer
+RN-MON-N10,Calcular tiempo en vuelo
+RN-MON-N11,Correo electr\IeC {\'o}nico \IeC {\'u}nico
+RN-MON-N12,Nombre de usuario \IeC {\'u}nico
+RN-MON-N13,Confirmaci\IeC {\'o}n de contrase\IeC {\~n}a
+RN-MON-N14,Datos necesarios para el inicio de sesi\IeC {\'o}n
+Cliente,Cliente
+Drone,Drone
+Servidor,Servidor

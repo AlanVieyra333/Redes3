@@ -1,0 +1,146 @@
+%===============================================================================
+% Sección: Requerimientos del sistema.
+%
+
+\subsubsection{Requerimientos del sistema}
+
+Los requerimientos listados para esta sección se requiere especificar más 
+funcionalidad de lo que mostrará a los usuarios cuando accedan por medio de un 
+dispositivo. Estos requerimientos se muestran en la tabla 
+\ref{tab:req:soft:sistema}.
+
+\begin{longtable}[c]{| l | l | p{6.5cm} | c |}
+	\caption{Requerimientos de software del sistema. 
+	\label{tab:req:soft:sistema}} \\
+	\hline
+	\textbf{Id} & \textbf{Nombre} & \textbf{Descripción} & 
+	\textbf{Pri,}\\
+	\hline
+	\endfirsthead
+
+	\hline
+	\endhead
+
+	\hline
+	\endfoot
+
+	\hline
+	\endlastfoot
+ 
+ 	\multicolumn{4}{| c |}{\textbf{Requerimientos funcionales}} 
+	\\\hline
+	RFS1 & Tipos de usuario & El sistema deberá manejar un solo tipo 
+	de usuario en el sistema, el cual es el cliente.
+	& MA
+	\\\hline
+	RFS2 & Registro de usuarios & El sistema deberá solicitar el 
+	nombre, usuario y correo para registrar a un nuevo usuario. 
+	& MA
+	\\\hline
+	RFS3 & Inicio de sesión & El sistema deberá dejar acceder al 
+	sistema a cualquier usuario que haya iniciado sesión. 
+	& MA
+	\\\hline
+	RFS4 & Mapa de selección & El sistema deberá mostrar un mapa 
+	señalando la ubicación actual del drone. 
+	& MA
+	\\\hline
+	RFS5 & Especificación de vuelo & El sistema deberá permitir al 
+	cliente seleccionar en el mapa las coordenadas geográficas de 
+	las ubicaciones inicial y final a las que desea que el drone se 
+	traslade autónomamente. 
+	& MA
+	\\\hline
+	RFS6 & Distancia de trayecto & El sistema deberá validar que la 
+	distancia entre la ubicación inicial y la ubicación final sea 
+	menor a 50 metros. 
+	& MA
+	\\\hline
+	RFS7 & Solicitud de dron & El sistema deberá solicitar al drone 
+	realizar el vuelo de la ubicación inicial a la final 
+	establecidas por el cliente. 
+	& MA
+	\\\hline
+	RFS8 & Información de vuelo & El sistema deberá mostrar la 
+	información obtenida del drone, mientras éste se encuentra en 
+	vuelo:
+	\begin{itemize}
+	\item Posición geográfica (se mostrará en el mapa).
+	\item Altura sobre el nivel del mar.
+	\item Nivel de batería.
+	\item Velocidad vertical y horizontal.
+	\item Estado del drone (en vuelo, aterrizado).
+	\end{itemize} 
+	& M
+	\\\hline
+	RFS9 & Distancia recorrida & El sistema deberá calcular la 
+	distancia recorrida desde la ubicación inicial a la ubicación 
+	actual del drone y mostrarla en la pantalla. 
+	& M
+	\\\hline
+	RFS10 & Tiempo de llegada & El sistema deberá calcular el tiempo 
+	aproximado que le tomaría llegar de la ubicación actual del 
+	drone a la ubicación final y mostrarla en la pantalla. 
+	& M
+	\\\hline
+	RFS11 & Notificaciones al cliente & El sistema deberá notificar 
+	al cliente cuando el drone.
+	\begin{itemize}
+	\item Tenga un bajo nivel de batería.
+	\item Haya chocado.
+	\item No pueda iniciar el vuelo por alguna circunstancia (GPS, 
+	batería, distancia,motores dañados).
+	\item Haya llegado a su destino. 
+	\end{itemize}
+	& M
+	\\\hline
+	RFS12 & Persistencia de información de vuelo & El sistema deberá 
+	almacenar la siguiente información de cada vuelo realizado:
+	\begin{itemize}
+	\item Ubicación inicial y final.
+	\item Altura promedio del drone durante su vuelo.
+	\item Velocidad promedio del drone.
+	\item Distancia recorrida del drone.
+	\item Tiempo que tardó el drone en llegar a su destino. 
+	\end{itemize}
+	& B
+	\\\hline
+	RFS13 & Gestión de historial de vuelo & El sistema deberá llevar 
+	un registro de los vuelos solicitados por el cliente, 
+	permitiendo eliminarlos en caso de que lo desee. 
+	& B
+	\\\hline
+	\multicolumn{4}{| c |}{\textbf{Requerimientos no funcionales}} 
+	\\\hline
+	RNFS1 & Portabilidad & El sistema deberá realizarse en una 
+	aplicación web para ser operada con los navegadores web más 
+	populares actualmente:
+	\begin{itemize}
+	\item Internet Explorer Edge
+	\item Google Chrome
+	\item Mozilla Firefox
+	\item Opera
+	\item Safari
+	\end{itemize}
+	& MA
+	\\\hline
+	RNFS2 & Entorno de desarrollo & El sistema deberá desarrollarse 
+	con los framework de desarrollo web que faciliten su desarrollo 
+	e implementación. 
+	& MA
+	\\\hline
+	RNFS3 & Mantenibilidad & El sistema deberá tomar en cuenta la 
+	incorporación de mejoras, mientras éstas no interfieran con el 
+	funcionamiento del mismo. 
+	& A
+	\\\hline
+	RNFS4 & Tiempo de respuesta & El sistema deberá mostrar datos 
+	actualizados. 
+	& MA
+	\\\hline
+	RNFS5 & Usabilidad & El sistema deberá tener una interfaz 
+	gráfica adecuada para ser usada por cualquier tipo de usuario, 
+	implementando iconos descriptivos. 
+	& M
+	\\\hline
+ \end{longtable}

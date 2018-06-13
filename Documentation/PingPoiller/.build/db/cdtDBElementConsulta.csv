@@ -1,0 +1,390 @@
+id,name
+tAcademia,Academia
+tActividadDentroDelPeriodoEscolar,Actividades dentro del Periodo Escolar
+tAntecedenteAcademico,Antecedente Acad\IeC {\'e}mico
+tAreaFormacion,\IeC {\'A}rea de Formaci\IeC {\'o}n
+tCalendarioEscolar,Calendario Escolar
+tCargaMaxima,Carga m\IeC {\'a}xima en Cr\IeC {\'e}ditos
+tCargaMedia,Carga media en Cr\IeC {\'e}ditos
+tCargaMinima,Carga m\IeC {\'\i }nima en Cr\IeC {\'e}ditos
+tCredito,Cr\IeC {\'e}dito
+tCreditosSATCA,Cr\IeC {\'e}ditos SATCA
+tCreditosTEPIC,Cr\IeC {\'e}ditos TEPIC
+tEvaluacionExtraordinaria,Evaluaci\IeC {\'o}n Extraordinaria
+tEvaluacionOrdinaria,Evaluaci\IeC {\'o}n Ordinaria
+tFundamentacion,Fundamentaci\IeC {\'o}n
+tISBN,ISBN
+tISSN,ISSN
+tMapaCurricular,Mapa Curricular
+tModalidad,Modalidad
+tModalidadPresencial,Modalidad Presencial
+tModalidadMixta,Modalidad Mixta
+tModalidadADistancia,Modalidad a Distancia
+tPlanEstudio,Plan de Estudio
+tPerfilDocente,Perfil Docente
+tPeriodo,Periodo
+tPeriodoEscolar,Periodo Escolar
+tPeriodoDeTrabajo,Periodo de Trabajo
+tProfesor,Profesor
+tPolivirtual,Polivirtual
+tProgramaAcademico,Programa Acad\IeC {\'e}mico
+tProgramaDeEstudios,Programa de Estudios
+tProgramaEnRed,Programa Acad\IeC {\'e}mico en Red
+tRAP,Resultado de Aprendizaje Propuesto
+tRegistroDeEvaluacionOrdinaria,Registro de Evaluaci\IeC {\'o}n Ordinaria
+tRegistroDeEvaluacionExtraordinaria,Registro de Evaluaci\IeC {\'o}n Extraordinaria
+tRegistroDeEvaluacionPorSaberesPreviamenteAdquiridos,Registro de Evaluaci\IeC {\'o}n por Saberes Previamente Adquiridos
+tSaberesPreviamenteAdquiridos,Saberes Previamente Adquiridos
+tSistemaDeInduccion,Semana de Inducci\IeC {\'o}n
+tSuspensionDeLabores,Suspensi\IeC {\'o}n de labores
+tUnidadAcademica,Unidad Acad\IeC {\'e}mica
+tUnidadAprendizaje,Unidad de Aprendizaje
+programaAcademico,Programa Acad\IeC {\'e}mico
+{programaAcademico.nombre},Nombre
+{programaAcademico.estado},Estado
+{programaAcademico.modalidad},Modalidad
+{programaAcademico.nivelEducativo},Nivel Educativo
+{programaAcademico.actaAprobacion},Acta de Aprobaci\IeC {\'o}n
+{programaAcademico.programaRed},Programa en Red
+planEstudio,Plan de Estudio
+{planEstudio.nombre},Nombre
+{planEstudio.estado},Estado
+{planEstudio.fechaValid},Fecha de Validaci\IeC {\'o}n
+{planEstudio.fechaVigor},Fecha de Entrada en Vigor
+{planEstudio.cargaMin},Carga M\IeC {\'\i }nima
+{planEstudio.cargaMed},Carga Media
+{planEstudio.cargaMax},Carga M\IeC {\'a}xima
+academia,Academia
+{academia.nombre},Nombre
+organizacion,Organizaci\IeC {\'o}n
+{organizacion.tipoDivision},Tipo de Divisi\IeC {\'o}n
+{organizacion.numeroDivisiones},N\IeC {\'u}mero de Divisiones
+{organizacion.semestreDivision},Semestres por Divisi\IeC {\'o}n
+especializacion,Especializaci\IeC {\'o}n
+{especializacion.nombreEspecialidad},Nombre Especialidad
+unidadAprendizaje,Unidad de Aprendizaje
+{unidadAprendizaje.nombre},Nombre
+{unidadAprendizaje.estado},Estado
+{unidadAprendizaje.vigencia},Vigencia
+{unidadAprendizaje.proposito},Prop\IeC {\'o}sito
+{unidadAprendizaje.evaluacionAcreditacion},Evaluaci\IeC {\'o}n Acreditaci\IeC {\'o}n
+{unidadAprendizaje.orientacionDidactica},Orientaci\IeC {\'o}n Did\IeC {\'a}ctica
+{unidadAprendizaje.SATCA},SATCA
+{unidadAprendizaje.TEPIC},TEPIC
+{unidadAprendizaje.modalidad},Modalidad
+{unidadAprendizaje.areaFormacion},\IeC {\'A}rea de Formaci\IeC {\'o}n
+{unidadAprendizaje.intencionEducativa},Intenci\IeC {\'o}n Educativa
+{unidadAprendizaje.horasTeoriaSemana},Horas de teor\IeC {\'\i }a por semana
+{unidadAprendizaje.horasPracticaSemana},Horas de pr\IeC {\'a}ctica por semana
+{unidadAprendizaje.horasTeoriaSemestre},Horas de teor\IeC {\'\i }a por semestre
+{unidadAprendizaje.horasPracticaSemestre},Horas de pr\IeC {\'a}ctica por semana
+{unidadAprendizaje.horasTotalesSemestre},Horas totales por semestre
+{unidadAprendizaje.horasAprAuto},Horas de Aprendizaje Aut\IeC {\'o}nomo
+{unidadAprendizaje.nivelSemestre},Nivel Semestre
+{unidadAprendizaje.tipo},Tipo
+{unidadAprendizaje.tipoEnsenanza},Tipo de Ense\IeC {\~n}anza
+{unidadAprendizaje.clave},Clave
+{unidadAprendizaje.periodoTrabajo},Per\IeC {\'\i }odo de Trabajo
+{unidadAprendizaje.semestreSugerido},Semestre Sugerido
+{unidadAprendizaje.ocupaLaboratorio},Ocupa Laboratorio
+perfilDocente,Perfil Docente
+{perfilDocente.nivelAcademicoMinimo},Nivel Acad\IeC {\'e}mico M\IeC {\'\i }nimo
+{perfilDocente.nivelAcademicoSugerido},Nivel Acad\IeC {\'e}mico Sugerido
+{perfilDocente.especialidad},Especialidad
+habilidades,Habilidades
+{habilidades.nombre},Nombre
+actitudes,Actitudes
+{actitudes.nombre},Nombre
+conocimientos,Conocimientos
+{conocimientos.nombre},Nombre
+experienciaProfesional,Experiencia Profesional
+{experienciaProfesional.nombre},Nombre
+bibliografia,Bibliograf\IeC {\'\i }a
+{bibliografia.titulo},T\IeC {\'\i }tulo
+{bibliografia.editorial},Editorial
+{bibliografia.ano},A\IeC {\~n}o
+{bibliografia.pais},Pa\IeC {\'\i }s
+{bibliografia.autor},Autor
+{bibliografia.ISBN},ISBN
+{bibliografia.ISSN},ISSN
+{bibliografia.edicion},Edici\IeC {\'o}n
+{bibliografia.estado},Estado
+antecedentesAcademicos,Antecedentes Acad\IeC {\'e}micos
+{antecedentesAcademicos.fundamentales},Fundamentales
+{antecedentesAcademicos.sugeridos},Sugeridos
+unidadTematica,Unidad Tem\IeC {\'a}tica
+{unidadTematica.nombre},Nombre
+{unidadTematica.objetivo},Objetivo
+{unidadTematica.numero},N\IeC {\'u}mero
+tema,Tema
+{tema.nombre},Nombre
+{tema.horasDocenteTeoria},Horas docente teor\IeC {\'\i }a
+{tema.horasDocentePractica},Horas docente pr\IeC {\'a}ctica
+{tema.numero},N\IeC {\'u}mero
+practica,Pr\IeC {\'a}ctica
+{practica.nombre},Nombre
+{practica.lugarRealizacion},Lugar Realizaci\IeC {\'o}n
+programaAcademicoms,Programa Acad\IeC {\'e}mico
+{programaAcademicoms.nombre},Nombre
+{programaAcademicoms.modalidad},Modalidad
+{programaAcademicoms.nivelEducativo},Nivel Educativo
+{programaAcademicoms.actaAprobacion},Acta de Aprobaci\IeC {\'o}n
+{programaAcademicoms.programaRed},Programa en Red
+planEstudioms,Plan de Estudio
+{planEstudioms.nombre},Nombre
+{planEstudioms.estado},Estado
+{planEstudioms.fechaValidacion},Fecha de Validaci\IeC {\'o}n
+{planEstudioms.fechaVigor},Fecha de Entrada en Vigor
+{planEstudioms.cargaMin},Carga M\IeC {\'\i }nima
+{planEstudioms.cargaMed},Carga Media
+{planEstudioms.cargaMax},Carga M\IeC {\'a}xima
+competenciasGenericasms,Competencias Genericas
+{competenciasGenericasms.competencia},Competencia
+unidadAprendizajems,Unidad de Aprendizaje
+{unidadAprendizajems.nombre},Nombre
+{unidadAprendizajems.vigencia},Vigencia
+{unidadAprendizajems.competenciaGeneral},Competencia General
+{unidadAprendizajems.creditosSatca},Cr\IeC {\'e}ditos SATCA
+{unidadAprendizajems.modalidad},Modalidad
+{unidadAprendizajems.areaFormacion},\IeC {\'A}rea de Formaci\IeC {\'o}n Curricular
+{unidadAprendizajems.ramaConocimiento},Rama del Conocimiento
+{unidadAprendizajems.horasSemanaAula},Horas de Aula por Semana
+{unidadAprendizajems.horasSemanaTaller},Horas de Taller por Semana
+{unidadAprendizajems.horasSemanaLaboratorio},Horas de Laboratorio por Semana
+{unidadAprendizajems.horasSemanaOtrosAmbientesAprendizaje},Horas de Otros Ambientes de Aprendizaje por Semana
+{unidadAprendizajems.horasSemestreAula},Horas de Aula por Semestre
+{unidadAprendizajems.horasSemestreTaller},Horas de Taller por Semestre
+{unidadAprendizajems.horasSemestreLaboratorio},Horas de Laboratorio por Semestre
+{unidadAprendizajems.horasSemestreOtrosAmbientesAprendizaje},Horas de Otros Ambientes de Aprendizaje por Semestre
+{unidadAprendizajems.nivelOrganizacion},Nivel
+{unidadAprendizajems.tipo},Tipo
+{unidadAprendizajems.estado},Estado
+{unidadAprendizajems.clave},Clave
+{unidadAprendizajems.evidenciaIntegradoraGeneral},Evidencia Integradora
+{unidadAprendizajems.criteriosEvaluacionGenerales},Criterios de Evaluaci\IeC {\'o}n Generales
+{unidadAprendizajems.fundamentacion},Fundamentaci\IeC {\'o}n
+{unidadAprendizajems.manualPracticas},Manual de Pr\IeC {\'a}cticas
+perfilDocentems,Perfil Docente
+{perfilDocentems.informacionGeneral},Informaci\IeC {\'o}n General
+{perfilDocentems.perfilProfesional},Perfil Profesional
+{perfilDocentems.informacionAdicional},Informaci\IeC {\'o}n Adicional
+tipoOrganizacionms,Tipo de Organizacion
+{tipoOrganizacionms.nombre},Nombre
+espacioms,Espacio
+{espacioms.nombre},Nombre
+referenciaDocumentalms,Referencia Documental
+{referenciaDocumentalms.titulo},Titulo
+{referenciaDocumentalms.editorial},Editorial
+{referenciaDocumentalms.ano},A\IeC {\~n}o
+{referenciaDocumentalms.pais},Pa\IeC {\'\i }s
+{referenciaDocumentalms.autor},Autor
+{referenciaDocumentalms.isbn},ISBN
+{referenciaDocumentalms.issn},ISSN
+{referenciaDocumentalms.edicion},Edici\IeC {\'o}n
+{referenciaDocumentalms.tipo},Tipo
+{referenciaDocumentalms.estado},Estado
+{referenciaDocumentalms.clasificacion},Clasificaci\IeC {\'o}n
+unidadDidacticams,Unidad Did\IeC {\'a}ctica
+{unidadDidacticams.nombre},Nombre
+{unidadDidacticams.competenciaParticular},Competencia Particular
+{unidadDidacticams.evidenciaIntegradora},Evidencia Integradora
+{unidadDidacticams.criteriosEvaluacion},Criterios de Evaluaci\IeC {\'o}n
+{unidadDidacticams.porcentajeAcreditacion},Porcentaje de Contribuci\IeC {\'o}n para Acreditaci\IeC {\'o}n
+{unidadDidacticams.numero},N\IeC {\'u}mero
+paginasElectronicasms,P\IeC {\'a}ginas Electr\IeC {\'o}nicas
+{paginasElectronicasms.autor},Autor
+{paginasElectronicasms.titulo},Nombre
+{paginasElectronicasms.direccionElectronica},Direcci\IeC {\'o}n Electr\IeC {\'o}nica
+{paginasElectronicasms.clasificacion},Clasificaci\IeC {\'o}n
+{paginasElectronicasms.fechaConsulta},Fecha de Consulta
+rapms,RAP
+{rapms.numero},N\IeC {\'u}mero
+{rapms.descripcion},Descripci\IeC {\'o}n
+{rapms.duracion},Duraci\IeC {\'o}n
+practicams,Pr\IeC {\'a}ctica
+{practicams.numero},Numero
+{practicams.nombre},Nombre
+{practicams.duracion},Duraci\IeC {\'o}n
+contenidoms,Contenido
+{contenidoms.ambienteAprendizaje},Ambiente de Aprendizaje
+contenidoAprendizajems,Contenido de Aprendizaje
+{contenidoAprendizajems.contenido},Contenido
+{contenidoAprendizajems.tipo},Tipo
+actividadesSustantivasms,Actividades Sustantivas
+{actividadesSustantivasms.actividad},Actividad
+{actividadesSustantivasms.tipo},Tipo
+materialesRecursosDidacticosms,Materiales y Recursos Did\IeC {\'a}cticos
+{materialesRecursosDidacticosms.nombre},Nombre
+criteriosEvaluacionFormativams,Criterios de Evaluaci\IeC {\'o}n Formativa
+{criteriosEvaluacionFormativams.criterio},Criterio
+evidenciaAprendizajems,Evidencia de Aprendizaje
+{evidenciaAprendizajems.evidenciaAprendizaje},Evidencia de Aprendizaje
+unidadAcademica,Unidad Acad\IeC {\'e}mica
+{unidadAcademica.nombre},Nombre
+{unidadAcademica.clave},Clave
+{unidadAcademica.acronimo},Acr\IeC {\'o}nimo
+nivelEscolarizadoImpartido,Nivel Escolarizado Impartido
+{nivelEscolarizadoImpartido.nombre},Nombre
+domicilioGeografico,Domicilio Geogr\IeC {\'a}fico
+{domicilioGeografico.codigoPostal},C\IeC {\'o}digo Postal
+{domicilioGeografico.entidad},Entidad
+{domicilioGeografico.municipio},Municipio
+{domicilioGeografico.localidad},Localidad
+{domicilioGeografico.colonia},Colonia
+{domicilioGeografico.calle},Calle
+{domicilioGeografico.numExterior},N\IeC {\'u}mero Exterior
+{domicilioGeografico.numInterior},N\IeC {\'u}mero Interior
+edificio,Edificio
+{edificio.nombre},Nombre
+{edificio.niveles},Niveles
+{edificio.observaciones},Observaciones
+espacio,Espacio
+{espacio.nivel},Nivel
+{espacio.nombre},Nombre
+{espacio.capacidad},Capacidad
+{espacio.accesoDiscapacitado},Acceso a Discapacitados
+{espacio.utilizable},Utilizable
+{espacio.observaciones},Observaciones
+tipoEspacio,Tipo Espacio
+{tipoEspacio.nombre},Nombre
+prestamo,Pr\IeC {\'e}stamo
+{prestamo.unidadFuente},Unidad Acad\IeC {\'e}mica Fuente
+{prestamo.unidadDestino},Unidad Acad\IeC {\'e}mica Destino
+{prestamo.edificio},Edificio
+{prestamo.nivel},Nivel
+{prestamo.espacios},Espacios
+tipoPrestamo,Tipo de Pr\IeC {\'e}stamo
+{tipoPrestamo.nombre},Nombre
+BR-S001,Campos obligatorios
+BR-S002,Informaci\IeC {\'o}n correcta
+BR-S003,Eliminaci\IeC {\'o}n l\IeC {\'o}gica de elementos
+BR-S004,Unicidad de elementos
+BR-S005,Eliminaci\IeC {\'o}n de bibliograf\IeC {\'\i }a.
+BR-N001,Cantidad de Periodos Escolares por modalidad
+BR-N002,Duraci\IeC {\'o}n de un periodo.
+BR-N003,Actividades dentro del Periodo Escolar
+BR-N004,Actividades fuera del Periodo Escolar
+BR-N005,Saberes Previamente Adquiridos
+BR-N006,Semana de Inducci\IeC {\'o}n
+BR-N007,Editar un periodo escolar iniciado
+BR-N009,Restricciones para pr\IeC {\'e}stamo de espacios
+BR-N010,Eliminar espacio
+BR-N011,Asignar espacio a un Unidad de Aprendizaje
+BR-N012,Cancelaci\IeC {\'o}n de pr\IeC {\'e}stamo de espacio
+BR-N013,Fecha de autorizaci\IeC {\'o}n del plan de estudios 
+BR-N014,Entrada en vigor del plan de estudios
+BR-N015,Tiempo asignado a una Unidad de Aprendizaje 
+BR-N016,Conocimientos y experiencia del perfil docente
+BR-N017,Duplicidad de Programas Acad\IeC {\'e}micos
+BR-N018,Relaci\IeC {\'o}n entre las cargas de un plan de estudio
+BR-N019,Duraci\IeC {\'o}n del semestre
+BR-N020,Relaci\IeC {\'o}n de modalidades
+BR-N021,Construcci\IeC {\'o}n del nombre para un nuevo Per\IeC {\'\i }odo Escolar
+BR-N022,Ciclo de vida de un Programa Acad\IeC {\'e}mico
+BR-N023,Ciclo de vida de un Plan de Estudio
+BR-N024,Ciclo de vida de una Unidad de Aprendizaje
+Alumno,Alumno
+Calmecac,Calm\IeC {\'e}cac
+DEMS,Direcci\IeC {\'o}n de Educaci\IeC {\'o}n Media Superior
+DES,Direcci\IeC {\'o}n de Educaci\IeC {\'o}n Superior
+DIA,Divisi\IeC {\'o}n de Innovaci\IeC {\'o}n Acad\IeC {\'e}mica
+DESEncargadoDeRegistro,Encargado de Registro de la Direcci\IeC {\'o}n de Educaci\IeC {\'o}n Superior
+DEMSEncargadoDeRegistroDIA,Encargado de Registro de la Divisi\IeC {\'o}n de Innovaci\IeC {\'o}n Acad\IeC {\'e}mica de la Direcci\IeC {\'o}n de Educaci\IeC {\'o}n Superior
+UAMSEncargadoDeRegistro,Encargado de Registro de Nivel Medio Superior
+UAEncargadoDeRegistro,Encargado de Registro de la Unidad Acad\IeC {\'e}mica de Nivel Superior
+JefeDeDepartamento,Jefe de Departamento
+UAJefeInnovacion,Jefe de Innovaci\IeC {\'o}n Educativa de la Unidad Acad\IeC {\'e}mica
+DEMSJefeComision,"Jefe de la Comisi\IeC {\'o}n para el Dise\IeC {\~n}o o Redise\IeC {\~n}o del Programa Acad\IeC {\'e}mico, Planes de Estudio y Unidades de Aprendizaje de Nivel Medio Superior"
+DEMSJefeDIA,Jefe de la Divisi\IeC {\'o}n de Innovaci\IeC {\'o}n Acad\IeC {\'e}mica de la Direcci\IeC {\'o}n de Educaci\IeC {\'o}n Media Superior
+DESJefeDIA,Jefe de la Divisi\IeC {\'o}n de Innovaci\IeC {\'o}n Acad\IeC {\'e}mica la Direcci\IeC {\'o}n de Educaci\IeC {\'o}n Superior
+UAJefeRecursos,Jefe de Recursos Materiales y Servicios de la Unidad Acad\IeC {\'e}mica
+Profesor,Profesor
+UASSubdirectorAcademico,Subdirector Acad\IeC {\'e}mico de la Unidad Acad\IeC {\'e}mica de Nivel Superior
+UnidadAcademica,Unidad Acad\IeC {\'e}mica
+UA-CU1,Gestionar edificios de unidad acad\IeC {\'e}mica
+UA-CU1.1,Registrar nuevo edificio
+UA-CU1.2,Editar edificio
+UA-CU1.3,Eliminar edificio
+UA-CU1.4,Consultar edificio
+UA-CU1.5,Gestionar espacios
+UA-CU1.5.1,Registrar nuevo espacio
+UA-CU1.5.2,Editar espacio
+UA-CU1.5.3,Eliminar espacio
+UA-CU1.5.4,Consultar espacio
+UA-CU2,Gestionar pr\IeC {\'e}stamos de aulas y edificios
+UA-CU2.1,Registrar Pr\IeC {\'e}stamo
+UA-CU2.2,Cancelar pr\IeC {\'e}stamo
+UA-CU3,Gestionar asignaci\IeC {\'o}n de espacios a unidad de aprendizaje
+UA-CU3.1,Asignar espacios a unidad de aprendizaje
+UA-CU3.2,Consultar espacios de unidad de aprendizaje
+UA-CU3.2.1,Modificar espacios de unidad de aprendizaje
+DES-CU3,Gestionar unidades acad\IeC {\'e}micas
+DES-CU3.1,Registrar unidad acad\IeC {\'e}mica
+DES-CU3.2,Editar unidad acad\IeC {\'e}mica
+DES-CU3.3,Consultar unidad acad\IeC {\'e}mica
+DES-CU3.3.1,Consultar edificios de unidad acad\IeC {\'e}mica
+UA-M1,Men\IeC {\'u} Infraestructura
+UA-UI1,Gestionar Edificios
+UA-UI1.1,Registrar Edificio
+UA-UI1.2,Editar Edificio
+UA-UI1.4,Consultar Edificio
+UA-UI1.5,Gestionar Espacios
+UA-UI1.5.1,Registrar Espacio
+UA-UI1.5.2,Editar Espacio
+UA-UI1.5.4,Consultar Espacio
+UA-UI2,Gestionar Pr\IeC {\'e}stamos
+UA-UI2.1,Registrar Pr\IeC {\'e}stamo
+UA-UI3,Gestionar Asignaci\IeC {\'o}n de Espacios
+UA-UI3.1,Agregar Espacios
+UA-UI3.2,Consultar Espacios Asignados
+UA-UI3.2.1,Editar Espacios
+DES-M1,Men\IeC {\'u} Infraestructura
+DES-UI3,Gestionar Unidades Academicas
+DES-UI3.1,Registrar Unidad Academica
+DES-UI3.2,Editar Unidad Academica
+DES-UI3.3,Consultar Unidad Academica
+MSG1,Operaci\IeC {\'o}n Exitosa
+MSG2,Operaci\IeC {\'o}n Fallida
+MSG3,Elementos No Disponibles
+MSG4,Elemento No Disponible
+MSG5,Duplicado de Informaci\IeC {\'o}n
+MSG6,Falta dato obligatorio
+MSG7,Formato de campo Incorrecto
+MSG8,Operaci\IeC {\'o}n por Atender
+MSG9,L\IeC {\'\i }mite de Tiempo
+MSG10,Cierre de Operaci\IeC {\'o}n
+MSG11,Recomendaci\IeC {\'o}n para revisar configuraci\IeC {\'o}n de servicios web
+MSG12,Confirmar operaci\IeC {\'o}n sin cambios posteriores
+MSG13,Operaci\IeC {\'o}n en Curso
+MSG14,No tienes notificaciones por atender
+MSG15,No existe informaci\IeC {\'o}n en el sistema
+MSG16,Condiciones necesarias para realizar operaci\IeC {\'o}n
+MSG17,Eliminar elemento
+MSG18,Relaci\IeC {\'o}n de fechas incorrecta
+MSG19,Relaci\IeC {\'o}n de cantidades incorrecta
+MSG20,Relaci\IeC {\'o}n de horas incorrecta
+MSG21,Elementos m\IeC {\'\i }nimos necesarios
+MSG22,Notificaci\IeC {\'o}n de operaci\IeC {\'o}n.
+MSG23,No es posible realizar operaci\IeC {\'o}n sobre elemento
+MSG24,Confirmaci\IeC {\'o}n de eliminaci\IeC {\'o}n en cadena
+MSG25,Confirmaci\IeC {\'o}n de operaci\IeC {\'o}n
+MSG26,El per\IeC {\'\i }odo escolar ya inici\IeC {\'o}
+MSG27,Usuario y/o contrase\IeC {\~n}a incorrectos
+MSG28,Usuario Inhabilitado
+MSG29,Usuario bloqueado
+MSG30,Bienvenida
+MSG31,Vuelva Pronto
+MSG32,Cancelaci\IeC {\'o}n de pr\IeC {\'e}stamo
+MSG33,No es posible cancelar el pr\IeC {\'e}stamo
+MSG34,Alerta de eliminaci\IeC {\'o}n de bibliograf\IeC {\'\i }a
+MSG35,Advertencia sobre duraci\IeC {\'o}n de per\IeC {\'\i }odo escolar
+MSG36,Traslape de per\IeC {\'\i }odos escolares
+MSG37,Inconsistencia de fechas de actividad con su tipo
+MSG38,Duraci\IeC {\'o}n exacta de per\IeC {\'\i }odo
+MSG40,Inhabilitar usuario
+MSG41,Habilitar usuario
+MSG42,Confirmaci\IeC {\'o}n de operaci\IeC {\'o}n con errores
+MSG43,Elemento listo para revisi\IeC {\'o}n
+MSG44,Solicitud de cambios
+MSG45,"Elemento aprobado, operaci\IeC {\'o}n necesaria"
+MSG46,Cambio de estado en elemento

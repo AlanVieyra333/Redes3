@@ -1,0 +1,117 @@
+% Trayectorias de recibir información del sensor de proximidad
+% Autor(es): Landa Aguirre Rafael
+% 	     Alan Vieyra Fernando
+%	     Olvera Pérez Víctor David
+% Fecha: 04 - May - 2018
+%
+
+\begin{UseCase}{PR-CU1}{Recibir información del sensor de proximidad}{
+		Permite al \refElem{Drone} obtener lectura de información de la 
+		existencia de un objeto brindada por el sensor o sensores de 
+		proximidad.
+	}
+	\UCccitem{Versión}{0.1}
+	\UCccsection{Datos para el control Interno}
+	\UCccitem{Elaboró}{Rafael Landa Aguirre}
+	\UCccitem{Supervisó}{-----}
+	\UCccitem{Estatus}{\TODO[Por revisar]}
+	\UCccitem{Fecha del último estatus}{09 de Mayo de 2018}
+	\UCccitem{Observaciones}{\TODO[Por revisar]}
+	\UCsection{Atributos}
+	% V.0.1.
+	\UCitem{Actor}{\refElem{Drone}}
+	% V.0.1.
+	\UCitem{Propósito}{Recibir información del sensor(es) de proximidad.}
+	% V.0.1.
+	\UCitem{Entradas}{Distancia del sensor de proximidad.}
+	% V.0.1.
+	\UCitem{Origen}{Ninguno.}
+	% V.0.1.
+	\UCitem{Salidas}{Información de distancia.}
+	% V.0.1.
+	\UCitem{Destino}{Ninguno.}
+	% V.0.1.
+	\UCitem{Precondiciones}{Debe existir comunicación con el sensor de 
+			proximidad.}
+	% V.0.1.
+	\UCitem{Postcondiciones}{Ninguno.}
+	% V.0.1.
+	\UCitem{Reglas de Negocio}{\refIdElem{RN-VA-N01}}
+	% V.0.1.
+	\UCitem{Errores}{%
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{Cuando no existe conexión con el 
+			sensor,}{ el \refElem{Drone} inmediatamente responderá 
+			con un aterrizaje de precaución.}
+		\end{Titemize}				
+	}
+	% V.0.1.
+	\UCitem{Viene de}{Ninguno}
+	% V.0.1.
+	\UCitem{Disparadores}{El drone requiere recibir información del sensor 
+			de proximidad para detectar la existencia de objetos.} 
+	% V.0.1.
+	\UCitem{Condiciones de Término}{
+		El drone está en estado de aterrizaje.}
+	% V.0.1.
+	\UCitem{Efectos Colaterales}{El drone podrá hacer uso de la información 
+	de detección de un objeto, para llevar a cabo toma de decisiones.}
+	\UCitem{Datos sensibles}{Distancia.}
+\end{UseCase}
+
+
+%Trayectoria Principal : Happy Path
+
+\begin{UCtrayectoria}
+	% V.0.1.
+	\UCpaso [\UCactor] Lectura de paquetes vía Mavlink.
+	% V.0.1.
+	\UCpaso Inicializar puertos de entrada/salida del microcontrolador.	
+	% V.0.1.
+	\UCpaso Para cada conexión a un sensor de proximidad, dense los pasos 
+	siguientes:
+	% V.0.1.
+	\UCpaso Iniciar el puerto de conexión con el pin “trigger” del sensor en 
+	estado de bajo o 0 lógico.
+	% V.0.1.
+	\UCpaso Enviar señal de retardo en estado de alto o 1 lógico de 10 us.
+	% V.0.1.
+	\UCpaso Esperar el arribo de respuesta de la señal enviada. \refErr{Uno}
+	% V.0.1.
+	\UCpaso Calcular la distancia del basandose en el tiempo de espera de la 
+	señal dada en \refIdElem{RN-VA-N01}.
+	% V.0.1.
+	\UCpaso Empaquetar la distancia calculada en un paquete mavlink.
+	% V.0.1.
+	\UCpaso Enviar paquete mavlink al drone via serial USB.
+	% V.0.1.
+	\UCpaso Mientras el drone esté en estado de vuelo, regresar al paso 4.
+\end{UCtrayectoria}
+
+
+%-------------------------- Trayectoria Alternativa A ---------------------------------
+
+%\begin{UCtrayectoriaA}{A}{Se requiere seleccionar todas las unidades académicas }
+	% V.0.1 TODO.
+%	\UCpaso [\UCactor] 	Presiona el botón \IUbutton{Seleccionar Todo} de la pantalla \refIdElem{IN-DAE-UI2.1}.
+	% V.0.1 TODO.
+%	\UCpaso Continúa en el paso \ref{IN-DAE-CU2.1:sel}  de la trayectoria principal.
+%\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa F --------------------------------- 
+
+%\begin{UCtrayectoriaA}[Termina caso de uso]{F}{Se requiere Cancelar la operación}
+	% V.0.1 TODO.
+%	\UCpaso [\UCactor] 	Presiona el botón \IUbutton{Cancelar} de la pantalla \refIdElem{IN-DAE-UI2.1}.
+	% V.0.1 TODO.
+%	\UCpaso Muestra la pantalla \refIdElem{IN-DAE-UI2} o \refIdElem{IN-DAE-UI2a} 
+%\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa G --------------------------------- 
+
+%\begin{UCtrayectoriaA}{G}{Se requiere agregar una Unidad Académica}
+	% V.0.1 TODO.
+%	\UCpaso [\UCactor]  Selecciona el acrónimo de Unidad Académica que se requiere agregar a la asociación del calendario. 
+	% V.0.1 TODO.
+%	\UCpaso Sigue en el paso \ref{IN-DAE-CU2.1:sel}  de la trayectoria principal.
+%\end{UCtrayectoriaA}

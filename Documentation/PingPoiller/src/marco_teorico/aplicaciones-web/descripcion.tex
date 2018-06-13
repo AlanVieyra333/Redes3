@@ -1,0 +1,56 @@
+%===============================================================================
+% Descripción general de una arquitectura web.
+%
+
+\subsection{Descripción general}
+
+En el campo de la ingeniería de software se denomina aplicación web a una 
+aplicación basada en el modelo cliente-servidor, en el cual el cliente o 
+usuario, accede a la aplicación mediante la dirección en la que está ubicado el 
+respectivo servidor web a través de internet o de una intranet mediante un 
+navegador, es decir, haciendo uso del protocolo HTTP para comunicarse con el 
+usuario o con otras aplicaciones web. El protocolo de comunicación HTTP es el 
+método más usado para el intercambio de información en la World Wide Web. \\
+
+Estas aplicaciones son populares debido al práctico uso del navegador como 
+cliente, a la independencia del sistema operativo y a la facilidad para 
+actualizar y mantener dichas aplicaciones sin la necesidad de distribuir o 
+instalar software en miles de usuarios potenciales. En la figura
+\ref{fig:aplicacion-web:arquitectura} se puede apreciar de manera general la 
+arquitectura de una aplicación web 
+\cite{the:USB:puntos_venta, the:UDC:webapp_distributivo}.\\
+
+\fig{img_aplicacion_web_arquitectura}{aplicacion-web:arquitectura}{Esquema 
+general de una aplicación web}
+
+\pagebreak
+
+Las aplicaciones web se modelan mediante lo que se conoce como modelo de capas. 
+Una capa representa un elemento que procesa o trata información. Entre los 
+principales tipos se encuentran: \\
+
+\begin{itemize}
+	\item \textbf{Modelo de dos capas.} La información atraviesa dos capas 
+	entre la interfaz y la administración de los datos. Gran parte de la 
+	aplicación corre en el lado del cliente como se muestra en la figura 
+	\ref{fig:aplicacion-web:dosCapas}.
+
+\fig{img_aplicacion_web_dos_capas}{aplicacion-web:dosCapas}{Modelo de dos capas}
+
+	\item \textbf{Modelo de n-capas.} La información atraviesa varias capas. 
+	El más habitual es el modelo de tres capas, la cual está diseñada para 
+	superar las limitaciones de las arquitecturas ajustadas al modelo de dos 
+	capas, introduce una capa intermedia (la capa de proceso) entre 
+	presentación y los datos como se muestra en la figura 
+	\ref{fig:aplicacion-web:tresCapas}. Los procesos pueden ser manejados de 
+	forma separada a la interfaz de usuario y a los datos, esta capa 
+	intermedia centraliza la lógica de negocio, haciendo la administración 
+	más sencilla, los datos se pueden integrar de múltiples fuentes, las 
+	aplicaciones web actuales se ajustan a este modelo.
+
+\fig{img_aplicacion_web_tres_capas}{aplicacion-web:tresCapas}{Modelo de tres 
+capas.}
+
+\end{itemize}
+
+\newpage

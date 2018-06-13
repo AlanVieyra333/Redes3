@@ -1,0 +1,49 @@
+%===================== Especificación de la comunicación serial ===========================
+
+\subsubsection{Especificación de la comunicación serial}
+
+Para comunicar al drone con el microcontrolador se decidió implementar una interfaz USB ya que ésta permitirá tanto el intercambio de datos o paquetes, como alimentar al microcontrolador a un voltaje de 5v.
+
+Debido a que el microcontrolador tiene una terminal USART o UART, es necesario un convertidor estándar de comunicación UART a USB. \\
+
+La interfaz que se usará será la FT232RL ya que su implementación es sencilla y es más accesible comercialmente en comparación con otras, como se muestra en la tabla \ref{tabla:modelo-convertidores-usb}.
+
+\begin{table}[H]
+	\centering
+	\caption{Comparación de convertidores UART a USB.}
+	\label{tabla:modelo-convertidores-usb}
+	\begin{tabular}{|m{2cm}|m{2cm}|c|m{3cm}|c|}
+		\hline
+			\centering\textbf{Modelo} &
+			\centering\textbf{Rango de frecuencia} &
+			\centering\textbf{Popularidad} &
+			\centering\textbf{Facilidad de implementación} &
+			\textbf{Costo}
+		\\ \hline
+			\rowcolor{colorGrisClaro}
+			FT232RL &
+			\centering 300 baudios - 3 Mega baudios &
+			\centering Media &
+			\centering Alta &
+			Menor a \$100 MXN
+		\\ \hline
+			USB-SER &
+			\centering 300 baudios - 3 Mega baudios &
+			\centering Media &
+			\centering Baja &
+			Arriba de \$100 MXN
+		\\ \hline
+			CP2102 &
+			\centering 300 baudios - 3 Mega baudios &
+			\centering Media &
+			\centering Alta &
+			Menor a \$100 MXN
+		\\ \hline
+			FTDI231XQ &
+			\centering 300 baudios - 3 Mega baudios &
+			\centering Media &
+			\centering Alta &
+			Menor a \$100 MXN
+		\\ \hline
+	\end{tabular}
+\end{table}

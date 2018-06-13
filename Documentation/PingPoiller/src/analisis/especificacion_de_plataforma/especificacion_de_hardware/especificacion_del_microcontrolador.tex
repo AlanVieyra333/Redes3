@@ -1,0 +1,45 @@
+%===================== Especificación del microcontrolador ===========================
+
+\subsubsection{Especificación del microcontrolador}
+
+El microcontrolador que permitirá la comunicación entre el drone y el servidor web, así como adicionar un sensor de proximidad al mismo, será el modelo ATMEGA-162, debido a que cuenta con las características necesarias para este proyecto:
+
+\begin{itemize}
+	\item \textbf{2 puertos seriales:} Uno para implementar un sensor de proximidad al drone, y el otro para permitir comunicar al drone con el servidor web a través de internet usando un módulo GSM.
+	\item \textbf{Compatible con el lenguaje de programación C:} Ya que permite el uso librerías necesarias para comunicar al drone con el sensor de proximidad.
+\end{itemize}
+
+También se tomó en cuenta su costo y su popularidad frente a otros, como se muestra en la tabla \ref{tabla:modelo-micros}.
+
+\begin{table}[H]
+	\centering
+	\caption{Comparación de microcontroladores.}
+	\label{tabla:modelo-micros}
+	\begin{tabular}{|m{2cm}|m{2cm}|c|m{2cm}|m{2cm}|m{2.5cm}|}
+		\hline
+			\centering\textbf{Modelo} &
+			\centering\textbf{Rango de voltaje de operación} &
+			\centering\textbf{Velocidad} &
+			\centering\textbf{Tamaño de ancho de palabra} &
+			\centering\textbf{Número de puertos serie (USART)} &
+			\textbf{Lenguaje de programación}
+		\\ \hline
+			\rowcolor{colorGrisClaro}
+			ATMEGA162 &
+			\centering 2.7 - 5.5V &
+			16MHz &
+			\centering 8 bits &
+			\centering 2 &
+			C / C++ / Ensamblador
+		\\ \hline
+			ATMEGA8535 &
+			\centering 4.5 - 5.5 V &
+			\centering 16MHz &
+			\centering 8 bits &
+			\centering 1 &
+			C / C++ / Ensamblador
+		\\ \hline
+	\end{tabular}
+\end{table}
+
+Para propósitos de facilidad en la programación, así como para el uso librerías que permiten una comunicación fluida con el drone, se eligió usar AVR Studio, que brinda soporte al compilador del lenguaje C. La librería a utilizar será el protocolo de comunicación MAVLink, que permite el intercambio de datos o paquetes de manera directa con ardupilot, ya que este protocolo está implementado en él para comunicarse tanto con la estación de tierra como con los sensores internos del drone.

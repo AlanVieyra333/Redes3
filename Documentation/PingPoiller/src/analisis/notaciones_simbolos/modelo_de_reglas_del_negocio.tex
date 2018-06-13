@@ -1,0 +1,57 @@
+%===============================================================================
+% Sección: Modelo de reglas de negocio.
+%
+
+\subsection{Modelado de reglas de negocio}
+
+Las reglas de negocio son directivas que tienen como fundamento la misión de un 
+negocio y como objetivo regir estrategias para poder conseguir esta misión. Una 
+regla de negocio no requiere de una interpretación adicional. Estas reglas 
+también son una fuente de información muy relevante ya que generalmente 
+establecen las relaciones entre dos o más términos del negocio.
+En el documento se presentarán estas reglas en forma de secciones indicando los 
+siguientes atributos:
+
+\begin{itemize}
+	\item \textbf{Id:} Es el identificador de la regla de negocio con la 
+	cual se podrá referenciar a lo largo del documento.
+	\item \textbf{Nombre:} Indica el nombre de la regla de negocio el cual 
+	debe describir de forma concisa en qué consiste la regla.
+	\item \textbf{Tipo:} Indica el tipo de regla de negocio de acuerdo a 
+	cómo se aplica.
+	\begin{itemize}
+		\item \textbf{Habilitadora:} Permite realizar el proceso en el 
+		que la regla se ve involucrada.
+		\item \textbf{Cronometrada:} Recibe parámetros y con respecto a 
+		eso realiza el proceso.
+		\item \textbf{Ejecutiva:} Es aquella que se debe llevar a cabo 
+		cuando una autoridad se ve involucrada para que el proceso 
+		concluya.
+	\end{itemize}
+	\item Clase: Indica la naturaleza de la regla de negocio.
+		\begin{itemize}
+		\item \textbf{Condición:} Es una regla que cumple una condición 
+		para llevarse a cabo.
+		\item \textbf{Integridad Referencial:} Es una regla que indica 
+		validaciones que, de no ser tomadas en cuenta se pondría en 
+		peligro la integridad de la información.
+		\item \textbf{Autorización:} Son restricciones en las que se ven 
+		involucradas palabras como, al menos uno.
+		\end{itemize}
+	\item \textbf{Nivel:} Indica cómo es que la regla se toma en cuenta para 
+	el desarrollo del sistema.
+		\begin{itemize}
+		\item \textbf{Controla:} Define que el sistema se encargará de 
+		vigilar el cumplimiento de la regla en todo momento.
+		\item \textbf{Influencia:} Sugiere formas en las que debería 
+		realizarse la operación, pero no la limita. De tal forma que el 
+		sistema dará facilidades para evitar esas situaciones o 
+		advertirá cada vez que se detecte que la regla no es tomada en 
+		cuenta.
+		\end{itemize}
+	\item \textbf{Descripción:} Es un pequeño resumen que ayuda a entender 
+	la regla de negocio.
+	\item \textbf{Motivación:} Razón por la que existe la regla de negocio.
+	\item \textbf{Sentencia:} Descripción formal o matemática de la regla de 
+	negocio.
+\end{itemize}

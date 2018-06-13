@@ -1,0 +1,127 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tipo de documento y paquetes
+\documentclass[10pt]{report}
+
+\usepackage{styles/analisis}
+\usepackage{styles/mcflight}
+\usepackage{styles/pruebas}
+\usepackage{subfigure}
+\usepackage{appendix}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{pdfpages}
+\usepackage[nottoc]{tocbibind}
+\usepackage{pgfplots}
+\usepackage[
+	style=ieee,
+	backend=biber,
+	citestyle=numeric-verb,
+   ]{biblatex}
+\usepackage{enumitem}
+
+%Imports bibliography file
+\addbibresource{bib/references.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Datos del proyecto
+    %\sistema[Entregable 1]{Módulo de interfaz entre el Drone y el 
+    %microcontrolador}
+    %\NoRegistroTT{2017-B083}
+    \sistema[Entregable 1]{Ping Poller.}
+        \documento{C1-RT}{ADMINISTRACION DE SERVICIOS EN RED}{1.0}
+        \fecha{\today}
+        
+        \proyecto[McFlight]{Ping Poller}
+        
+        \organizacion{Escuela Superior de Cómputo}{Instituto Politécnico 
+			Nacional}
+		
+		\author{\textbf{Autor}}
+		{Alan Fernando Rincón Vieyra}{}{}
+        
+        %\elaboro[Integrante 1]{Nombre}
+        \aprobo[\textbf{Profesor}]{Eduardo Gutiérrez Aldana}
+        %\reviso[Director 1]{Nombre}
+        %\superviso[CATT]{Nombre}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Presentación
+
+        \title{\varProyecto}
+        \subtitle {\varDocumento}
+        
+        \setImgPortada{images/theme/banner}
+        \setImgHeader{images/theme/logoPar}{images/theme/logoInp}
+        \setImgLogo{images/theme/headerInp}{images/theme/headerPar}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuración
+
+        %=========================================================
+        % Para ocultar la información de control de cambios.
+        \hideControlVersion
+        
+        %=========================================================
+        % Para desactivar las referencias cruzadas.
+    	%\disablePersistence
+    	
+    	%=========================================================
+    	% Para generar referencias.
+		%\cdtSetCompileMode{genrefs}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inicio del Documento
+ \raggedbottom
+\begin{document}
+
+	%=======================================================================
+        % Portada
+        %\thispagestyle{empty}
+        \maketitle
+	%=======================================================================
+        %\input{src/resumen/Resumen}
+        % Hoja de revisión
+        % \makeDocInfo
+        % \bigskip\\
+        % \makeObservaciones[3cm]
+        % \vspace{2cm}
+        % \makeFirmas
+        
+        %=======================================================================
+        % Indices del documento
+        \tableofcontents
+        %\listoffigures
+		%\listoftables
+        %\mainmatter
+        
+        %\LRCornerWallPaper{1}{images/theme/pleca}
+        
+        %=======================================================================
+        \chapter{Introducción}
+        \label{ch:introduccion}
+        \input{src/introduccion/index_intro}
+        
+        %=======================================================================
+        \chapter{Análisis y Diseño}
+        \label{ch:analisis}
+        \input{src/analisis/index_analisis}
+        
+        %=======================================================================
+        \chapter{Desarrollo e implementación}
+        \label{ch:avances}
+        \input{src/avances/Avances}
+        
+        %=======================================================================
+        %\chapter{Glosario de términos}
+        %\label{ch:glosario}
+        %\input{src/glosario/Glosario_terminos}
+        
+        %\clossing
+        %\cdtSaveData
+
+	% IEEE bibliography
+	\printbibliography[heading=bibintoc, title={Bibliografía}]
+
+\end{document}

@@ -1,0 +1,26 @@
+\subsection{Prototipo 3: Módulo de proximidad}
+
+\subsubsection{Objetivo}
+Enviar datos de proximidad al drone \textbf{Bebop 2} de Parrot usando el firmware \textbf{Ardupilot} versión 3.5.5 en un rango de 2 a 400 cm.
+
+\subsubsection{Descripción}
+El drone deberá obtener los datos de proximidad del sensor a través del microcontrolador.
+
+\subsubsection{Resultados}
+En la figura \ref{fig:test3} se muestra el drone conectado a un Arduino Nano, el cual a su vez esta conectado a un sensor ultrasónico.
+
+En la figura \ref{fig:test3.1} se muestra el valor de la distancia del objeto a sensar.
+
+En la figura \ref{fig:test3.2} se muestra el valor de la distancia obtenida por el drone.
+
+\fig{test/img_prueba_3_proximidad_1}{test3}{Drone conectado a un Arduino Nano.}
+
+\fig{test/img_prueba_3_proximidad_2}{test3.1}{Flexómetro midiendo 1 metro hacia el objeto a medir.}
+
+\fig{test/img_prueba_3_proximidad_3}{test3.2}{Distancia mostrada en la interfaz de Mission Planner.}
+
+\begin{prueba}[{\bf Subsistema:} Vuelo Autónomo, {\bf Módulo:} Proximidad, {\bf Caso de uso:} PR-CU1 Recibir información de sensor de proximidad]{PR-CU1-P1}{Obtener distancia del objeto}
+	\Pitem{Recepción de datos}
+	\pregunta{¿Existe comunicación con el Arduino?}{X}{}{Requiere activar el parámetro PRX\_VALUE en Mission Planner.}
+	\pregunta{¿La distancia obtenida es certera?}{X}{}{Ninguna.}
+\end{prueba}

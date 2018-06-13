@@ -1,0 +1,132 @@
+% Caso de uso: Iniciar sesión.
+% Autor(es): Landa Aguirre Rafael
+% 	     Alan Vieyra Fernando
+%	     Olvera Pérez Víctor David
+% Fecha: 04 - May - 2018
+%
+
+\begin{UseCase}{AS-CU2}{Iniciar sesión}{
+		Permite al \refElem{Cliente} acceder al sistema para hacer uso 
+		de éste.
+	}
+	\UCccitem{Versión}{0.1}
+	\UCccsection{Datos para el control Interno}	
+	\UCccitem{Elaboró}{Alan Fernando Rincón Vieyra}
+	\UCccitem{Revisó}{\TODO}
+	\UCccitem{Estatus}{Por revisar}
+	\UCccitem{Fecha del último estatus}{10 de Mayo de 2018}
+	\UCccitem{Observaciones}{Ninguna}
+	\UCsection{Atributos}
+	
+	\UCitem{Actor}{\refElem{Cliente}}
+	
+	\UCitem{Propósito}{Acceder al sistema.}
+
+	\UCitem{Entradas}{%
+		\begin{Titemize}
+			\Titem \refElem{Usuario.nombreUsuario}.
+			\Titem \refElem{Usuario.contrasenia}.
+		\end{Titemize}
+	}
+	
+	\UCitem{Origen}{%
+		\begin{Titemize}
+			\Titem \ioEscribir
+		\end{Titemize}
+	}
+
+	\UCitem{Salidas}{%
+		\begin{Titemize}
+			\Titem \refIdElem{MSG6}
+			\Titem \refIdElem{MSG8}
+			\Titem \refIdElem{MSG10}
+			\Titem \refIdElem{MSG11}
+		\end{Titemize}	
+	}
+	
+	\UCitem{Destino}{Pantalla}
+	
+	\UCitem{Precondiciones}{%
+		Estar registrado en el sistema.
+	}
+	
+	\UCitem{Postcondiciones}{%
+		El usuario accede al sistema.
+	}
+	
+	\UCitem{Reglas de Negocio}{%
+		\begin{Titemize}
+			\Titem \refIdElem{RN-MON-N03}
+			\Titem \refIdElem{RN-MON-N05}
+			\Titem \refIdElem{RN-MON-N14}
+		\end{Titemize}
+	}
+	
+	\UCitem{Errores}{%
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{Cuando el usuario no introduce todos 
+			los campos marcados con asterisco,}{el sistema muestra 
+			el mensaje \refIdElem{MSG6} debajo de cada campo 
+			faltante y regresa al paso \ref{AS-CU2:introducirDatos} 
+			de la trayectoria principal.}
+			
+			\Titem \UCerr{Dos}{Cuando se introduce un nombre de 
+			usuario o contraseña inválida,}{el sistema muestra el 
+			mensaje \refIdElem{MSG8} o \refIdElem{MSG10} 
+			respectivamente y regresa al paso 
+			\ref{AS-CU2:introducirDatos} de la trayectoria 
+			principal.}
+			
+			\Titem \UCerr{Tres}{Cuando se introduce un nombre de 
+			usuario o contraseña que no pertenecen a un usuario 
+			registrado,}{el sistema muestra el mensaje 
+			\refIdElem{MSG11} y regresa al paso 
+			\ref{AS-CU2:introducirDatos} de la trayectoria 
+			principal.}
+		\end{Titemize}				
+	}
+	
+	\UCitem{Viene de}{Ninguno.}
+	
+	\UCitem{Disparadores}{Requiere hacer uso del sistema.} 
+	
+	\UCitem{Condiciones de Término}{%
+		Se muestra la pantalla \refIdElem{GV-IU1} indicando que el usuario ha accedido al sistema.}
+	
+	\UCitem{Efectos Colaterales}{Ninguno.}
+	
+	\UCitem{Datos sensibles}{Ninguno.}
+\end{UseCase}
+
+
+%Trayectoria Principal : Happy Path
+
+\begin{UCtrayectoria}
+	
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Iniciar sesión} en la pantalla \refIdElem{AS-IU1}.
+	
+	\UCpaso Muestra la pantalla \refIdElem{AS-IU3}.
+	
+	\UCpaso [\UCactor] \label{AS-CU2:introducirDatos}Introduce su nombre de usuario y su contraseña.
+	
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Acceder}. \refTray{A}
+	
+	\UCpaso Verifica que no falte información en los campos marcados con asterisco, con base a la regla de negocio \refIdElem{RN-MON-N14}. \refErr{Uno}
+	
+	\UCpaso Verifica que los datos introducidos sean válidos con base a las reglas de negocio \refIdElem{RN-MON-N03} y \refIdElem{RN-MON-N05}. \refErr{Dos}
+	
+	\UCpaso Verifica que el nombre de usuario y la contraseña pertenezcan a un usuario registrado en el sistema. \refErr{Tres}
+	
+	\UCpaso Muestra la pantalla \refIdElem{GV-IU1}.
+	
+\end{UCtrayectoria}
+
+
+%-------------------------- Trayectoria Alternativa A ---------------------------------
+
+\begin{UCtrayectoriaA}[Termina caso de uso]{A}{Se requiere cancelar la operación}
+
+	\UCpaso [\UCactor] Da clic sobre la imagen principal del menú.
+	
+	\UCpaso Muestra la pantalla \refIdElem{AS-IU1}.
+\end{UCtrayectoriaA}

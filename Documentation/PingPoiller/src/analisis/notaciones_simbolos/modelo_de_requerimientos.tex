@@ -1,0 +1,75 @@
+%===============================================================================
+% Sección: Modelo de requerimientos.
+%
+
+\subsection{Modelado de requerimientos}
+
+Los requerimientos de este proyecto se encuentran divididos en requerimientos de 
+usuario y de sistema.
+\begin{itemize}
+	\item Los requerimientos del usuario los proporciona el cliente 
+	especificando qué es lo que desea que el sistema haga, así como las 
+	limitaciones operacionales con las que cuenta.
+	\item Los requerimientos del sistema describen los servicios del sistema 
+	de una forma más detallada y técnica, donde en conjunto el cliente y el 
+	contratante determinan estos requerimientos.
+\end{itemize}
+
+A su vez, en cada uno de los requerimientos anteriores podemos encontrar una 
+subdivisión de requerimientos en funcionales y no funcionales, como se listan a 
+continuación:
+
+\begin{itemize}
+	\item Los requerimientos funcionales son aquellos que definen cómo debe 
+	funcionar el sistema.
+	\item Los requerimientos no funcionales son aquellos que especifican 
+	criterios de evaluación  de la operación de un servicio informático con 
+	fines de uso.
+\end{itemize}
+
+Para los requerimientos funcionales se usará la clave RFXY, donde:
+\begin{itemize}
+	\item RF: Es la clave para todos los Requerimientos Funcionales.
+	\item X: Es la letra correspondiente al tipo de requerimiento (“H” - 
+	Hardware, “S” - Software).
+	\item Y: Es un número consecutivo: 1, 2, 3, $\cdots$
+\end{itemize}
+
+Para los requerimientos no funcionales se usará la clave RNFXY, donde:
+\begin{itemize}
+	\item RNF: Es la clave para todos los Requerimientos no Funcionales.
+	\item X: Es la letra correspondiente al tipo de requerimiento (“H” - 
+	Hardware, “S” - Software).
+	\item Y: Es un número consecutivo: 1, 2, 3, $\cdots$
+\end{itemize}
+
+Para los requerimientos del usuario se usará la clave RUXY, donde:
+\begin{itemize}
+	\item RU: Es la clave para todos los Requerimientos del Usuario.
+	\item X: Es la letra correspondiente al tipo de requerimiento (“H” - 
+	Hardware, “S” - Software).
+	\item Y: Es un número consecutivo: 1, 2, 3, $\cdots$
+\end{itemize}
+
+Además, se usan las abreviaciones que se muestran en la tabla 
+\ref{tab:leyenda:RFs}. La prioridad describe el grado de importancia (relevancia 
+y urgencia) que tiene para el negocio que el sistema cumpla con dicho 
+requerimiento.
+
+\begin{table}[H]
+	\centering 
+	\caption{Leyenda para los requerimientos funcionales.}
+	\label{tab:leyenda:RFs}
+	\begin{tabular}{ | l | l |}
+	\hline
+	$\textbf{Abreviación}$ & $\textbf{Descripción}$ \\\hline
+	Id & Identificador del requerimiento. \\\hline
+	Pri. & Prioridad \\\hline
+	Ref. & Referencia a los Requerimientos de usuario. \\\hline
+	MA & Prioridad Muy Alta. \\\hline
+	A & Prioridad Alta. \\\hline
+	M & Prioridad Media. \\\hline
+	B & Prioridad Baja. \\\hline
+	MB & Prioridad Muy Baja. \\\hline
+	\end{tabular}
+\end{table}

@@ -1,0 +1,12 @@
+id,name
+MSG1,Operaci\IeC {\'o}n exitosa
+MSG2,Operaci\IeC {\'o}n fallida
+MSG3,Elementos no disponibles
+MSG5,Duplicado de informaci\IeC {\'o}n
+MSG6,Falta dato obligatorio
+MSG7,Formato de nombre incorrecto
+MSG8,Formato de nombre de usuario incorrecto
+MSG9,Formato de correo incorrecto
+MSG10,Formato de contrase\IeC {\~n}a incorrecto
+MSG11,Datos de usuario inv\IeC {\'a}lidos
+MSG15,Confirmaci\IeC {\'o}n de contrase\IeC {\~n}a incorrecta

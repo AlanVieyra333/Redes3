@@ -1,0 +1,64 @@
+%===============================================================================
+% Sección: Requerimientos del sistema.
+%
+
+\subsubsection{Requerimientos del sistema}
+
+Los requerimientos del sistema describen los servicios del sistema de una forma 
+más detallada y técnica, donde en conjunto el cliente y el contratante 
+determinan estos requerimientos. Estos requerimientos se muestran en la tabla 
+\ref{tab:req:hard:sistema}.
+
+\begin{table}[H]
+	\centering
+	\caption{Requerimientos de hardware del sistema.}
+	\label{tab:req:hard:sistema}
+	\begin{tabular}{ | l | l | p{6.5cm} | l |}
+		\hline
+		\textbf{Id} & \textbf{Nombre} & \textbf{Descripción} & 
+		\textbf{Pri,}
+		\\\hline
+		\multicolumn{4}{|c|}{\textbf{Requerimientos funcionales}} 
+		\\\hline
+		RFH1 & Proximidad & Etapa de medición de proximidad. 
+		& MA
+		\\\hline
+		RFH2 & Módulo GSM & Etapa de envío de datos del drone.
+		& MA
+		\\\hline
+		RFH3 & Comunicación con el drone & Circuito de comunicación 
+		serial entre el drone y el microcontrolador.
+		& MA
+		\\\hline
+		RFH4 & Comunicación con el servidor web & Circuito de 
+		comunicación serial entre el microcontrolador y el módulo GSM.
+		& MA
+		\\\hline
+		\multicolumn{4}{|c|}{\textbf{Requerimientos no funcionales}} 
+		\\\hline
+		RNFH1 & Vehículo aéreo & El sistema del vehículo deberá ser 
+		capaz de trasladarse de un lugar a otro vía aérea y deberá tener 
+		control sobre sus movimientos. & A
+		\\\hline
+		RNFH2 & Sensores del vehículo & El sistema del vehículo deberá 
+		contar con los siguientes sensores:
+		\begin{itemize}
+		\item GPS. Para saber su ubicación geográfica.
+		\item Giroscopio. Para tener una buena estabilidad en sus 
+		movimientos.
+		\item Magnetómetro. Para saber hacia qué dirección debe moverse.
+		\item Barómetro. Para determinar la altura a la que desea 
+		elevarse.
+		\item Acelerómetro. Para que sus movimientos sean lo más 
+		precisos posibles.
+		\item Sensor de proximidad. Para determinar si existe un 
+		obstáculo cerca de él en su camino.
+		\end{itemize}
+		& A
+		\\\hline
+		RNFH3 & Monitoreo del vehículo & El usuario requiere que el 
+		vehículo se comunique con la aplicación web para monitorear el 
+		vuelo. & A
+		\\\hline
+	\end{tabular}
+\end{table}

@@ -1,0 +1,39 @@
+%===============================================================================
+% Sección: Introduccion al modelo de mensajes.
+%
+
+Los mensajes son elementos en el sistema que ayudan a mantener pendiente al 
+actor, ya sea para indicarle que la operación se llevó a cabo correctamente, si 
+existe un error, o si es solo para informar de alguna acción que ejecuta el 
+sistema internamente. \\
+
+Cuando un mensaje es recurrente se parametrizan sus elementos, por ejemplo los mensajes: ``Aún no existen registros de \textit{drones} en el sistema.'', ``Aún no existen registros de \textit{vuelos} en el sistema.'', tienen una estructura similar 
+por lo que, con el objetivo de que el mensaje sea genérico y pueda utilizarse en todos los casos de uso que se considere necesario, se utilizan parámetros para definir el mensaje.\\
+
+Los parámetros también se utilizan cuando la redacción del mensaje tiene datos que son ingresados por el actor o que dependen del resultado de la operación, por ejemplo: 
+``El \textit{usuario} ha sido \textit{registrado} exitosamente.''. En este caso la redacción se presenta parametrizada de la forma: ``$<ARTICULO> + <ENTIDAD>$ ha sido $<OPERACION>$ exitosamente.'' y los parámetros se describen de la siguiente forma:
+
+\begin{itemize}
+	\item ARTICULO: Es un artículo determinado.
+	\item ENTIDAD: Es el valor de la entidad sobre la cual se realizó la acción.
+	\item OPERACIÓN: Es la acción que el actor solicitó realizar.
+\end{itemize}
+
+Cada mensaje enlista los parámetros  que utiliza, sin embargo aquí se definen los más comunes a fin de simplificar la descripción de los mensajes:
+
+\begin{description}
+	\item [$<ARTICULO>$:] Se refiere a un {\em artículo} el cual puede ser DETERMINADO (El $\mid$ La $\mid$ Lo $\mid$ Los $\mid$ Las) o INDETERMINADO (Un $\mid$ Una $\mid$ 
+	Uno $\mid$ Unos $\mid$Unas) se aplica generalmente sobre una ENTIDAD, ATRIBUTO o VALOR.
+	
+	\item [$<CAMPO>$:] Se refiere a un campo del formulario. Por lo regular es el nombre de un atributo en una entidad.
+	
+	\item [$<CONDICION>$:] Define una expresión booleana cuyo resultado deriva en {\em falso} o {\em verdadero} y suele ser la causa del mensaje.
+	
+	\item [$<DATO>$:] Es un sustantivo y generalmente se refiere a un atributo de una entidad descrito en el modelo estructural del negocio, por ejemplo: nombrem, nombre de usuario, correo, etc. %ATRIBUTO
+	
+	\item [$<ENTIDAD>$:] Es un sustantivo y generalmente se refiere a una entidad del modelo estructural del negocio, por ejemplo: cliente, vuelo, etc.
+	\item [$<OPERACION>$:] Se refiere a una acción que se debe realizar sobre los datos de una o varias entidades. Por ejemplo: registrar, eliminar, actualizar, por mencionar algunos. Comúnmente la OPERACIÓN va concatenada con el sustantivo, por ejemplo: Registro de un nuevo usuario, solicitar un vuelo, eliminar un vuelo del historial y demás.
+	
+	\item [$<VALOR>$:] Es un sustantivo concreto y generalmente se refiere a un valor en específico. Por ejemplo: \textit{Correo} es un \textbf{valor} concreto de la \textbf{entidad} \textit{Cliente}.
+	
+\end{description}

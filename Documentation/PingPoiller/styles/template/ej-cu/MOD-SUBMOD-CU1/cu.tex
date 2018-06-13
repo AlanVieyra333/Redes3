@@ -1,0 +1,139 @@
+\begin{UseCase}{IN-UA-CU3.1.1}{Inscribir alumnos por grupo}{
+	Permite inscribir a uno o mas alumnos a las \refElem{UnidadDeAprendizaje} pertenecientes a un grupo determinado, durante el \refElem{PeriodoEscolar} previamente seleccionado.
+}
+    \UCccitem{Versión}{0.1}
+    \UCccsection{Datos para el control Interno}	
+    \UCccitem{Elaboró}{Alan Fernando Rincón Vieyra}
+    \UCccitem{Supervisó}{Ulises Vélez Saldaña}
+    \UCccitem{Operación}{Registro}
+    \UCccitem{Prioridad}{Media}
+    \UCccitem{Complejidad}{Media}
+    \UCccitem{Volatilidad}{Baja}
+    \UCccitem{Madurez}{Baja}
+    \UCccitem{Estatus}{Revisión}
+    \UCccitem{Dificultades}{}
+    \UCccitem{Fecha del último estatus}{06 de Febrero de 2017}
+    \UCccitem{Fecha}{}
+    \UCccitem{Evaluador}{}
+    \UCccitem{Resultado}{}
+    \UCccitem{Observaciones}{}
+    \UCsection{Atributos}
+
+    \UCitem{Actor}{
+    	\begin{Titemize}
+    		\Titem \refElem{UAJefeDeGestionEscolar}
+    	\end{Titemize}
+    }
+
+    \UCitem{Propósito}{
+    	\begin{Titemize}
+    		\Titem Inscribir varios alumnos a las Unidades de Aprendizaje de un grupo.
+    	\end{Titemize}
+    }
+
+    \UCitem{Entradas}{
+        \begin{Titemize}
+        	\Titem \refElem{tSemestre}/\refElem{tNivel}.
+        	\Titem \refElem{Grupo}.
+        	\Titem Una o mas \refElem{UnidadDeAprendizaje}.
+        	\Titem Una o mas \refElem{Preboleta}.
+        \end{Titemize}	
+    }
+
+    \UCitem{Origen}{
+        \begin{Titemize}
+        	\Titem Se selecciona con el mouse.
+        	\Titem Se selecciona con el mouse.
+        	\Titem Se selecciona con el mouse.
+        	\Titem Se ingresa desde el teclado / Se importan desde una hoja de cálculo.
+        \end{Titemize}
+    }
+
+    \UCitem{Salidas}{
+    	\begin{Titemize}
+    		\Titem El nombre de las Modalidades registradas en el sistema (vea \refElem{tModalidad}).
+    		\Titem El nombre de los Ciclos escolares disponibles para selección (vea \refElem{CicloEscolar.clave}).
+    	\end{Titemize}	
+    }
+    % V 0.1 Ok.
+    \UCitem{Destino}{Pantalla.}
+    % V 0.1 Ok.
+    \UCitem{Precondiciones}{%
+    	\begin{Titemize}
+    		\Titem \textbf{Sistematizada:} Que exista por lo menos un ciclo escolar.
+    		\Titem \textbf{Sistematizada:} Que exista por lo menos una Modalidad.
+    	\end{Titemize}
+    }
+    % V 0.1 Ok.
+    \UCitem{Postcondiciones}{%
+    	\begin{Titemize}
+    		\Titem La modalidad y Ciclo escolar seleccionados determinarán toda la información y operaciones para los demás casos de uso de este módulo.
+    	\end{Titemize}
+    }
+    % V 0.1 Ok.
+    \UCitem{Reglas de Negocio}{%
+    	\begin{Titemize}
+    		\Titem \refIdElem{BR-IN-N005}
+    	\end{Titemize}
+    }
+    % V 0.1 Ok.
+    \UCitem{Errores}{%
+    	\begin{Titemize}
+    		\Titem \UCerr{Uno}{Cuando no se encuentran  \textbf{Ciclos escolares} o {\bf Modalidades} registrados,}{ el sistema muestra el mensaje \refIdElem{MSG3} para Modalidades y Ciclos escolares en la pantalla \refIdElem{IN-DAE-UI1} y termina el caso de uso.}
+    	\end{Titemize}				
+    }
+    % V 0.1 Ok.
+    \UCitem{Viene de}{\refIdElem{CU-Login} o \refIdElem{IN-DAE-UI2}}
+    % V 0.1 Ok.
+    \UCitem{Disparadores}{%
+    	\begin{Titemize}
+    		\Titem Requiere consultar el histórico de Ciclos escolares anteriores.
+    		\Titem Requiere monitorear y gestionar lo relativo al ciclo escolar actual.
+    		\Titem Requiere planear lo relativo a el ciclo escolar próximo.
+    	\end{Titemize}
+    } 
+    % V 0.1 Ok.
+    \UCitem{Condiciones de Término}{%
+    	Se muestra en la pantalla \refIdElem{IN-DAE-UI2} con el ciclo escolar y la modalidad seleccionados.}
+    % V 0.1 Ok.
+    \UCitem{Efectos Colaterales}{Ninguno}
+    % V 0.1 Ok.
+    \UCitem{Referencia Documental}{}
+    % V 0.1 Ok.
+    \UCitem{Auditable}{No}
+    % V 0.1 Ok.
+    \UCitem{Datos sensibles}{Ninguna}
+\end{UseCase}
+
+
+%Trayectoria Principal : Happy Path
+\begin{UCtrayectoria}	
+
+	% V 0.1 Ok.
+    \UCpaso[\UCactor] \label{cancelar}Da clic en el icono \IUEditar de la pantalla \refIdElem{IN-DAE-UI1}.
+    % V 0.1 Ok.
+    \UCpaso Obtiene las Modalidades registradas.\refErr{Uno}
+    % V 0.1 Ok.
+    \UCpaso Obtiene los últimos 5 ciclos escolares anteriores al actual, el ciclo actual y 2 ciclos escolares posteriores con base a la regla de negocio \refIdElem{BR-IN-N005}.
+    % V 0.1 Ok.    
+    \UCpaso Muestra la pantalla \refIdElem{IN-DAE-UI1.2} con la información obtenida.
+    % V 0.1 Ok.
+    \UCpaso [\UCactor] Selecciona un ciclo escolar.
+    % V 0.1 Ok.
+    \UCpaso [\UCactor] \label{DAE-IN-CU1:acp} Presiona el botón \IUbutton{Aceptar}. \refTray{A} 
+    \UCpaso Establece como {\bf Ciclo Escolar Seleccionado} y {\bf Modalidad seleccionada} a los valores seleccionados.
+    \UCpaso Muestra la pantalla \refIdElem{IN-DAE-UI2} con el Ciclo Escolar y Modalidad seleccionados.
+\end{UCtrayectoria}
+
+%Trayectoria Alternativas
+%----------------- A
+\begin{UCtrayectoriaA}[Termina el caso de uso]{A}{El actor requiere cancelar la operación.}
+\UCpaso Presiona el botón \IUbutton{Cancelar}.
+\UCpaso Muestra la pantalla \refIdElem{IN-DAE-UI1}.
+\end{UCtrayectoriaA}
+
+\subsection{Puntos de extensión}
+
+\UCExtensionPoint{Gestionar Calendario Escolar}{El actor requiere Gestionar Calendario Escolar}{ Paso \ref{DAE-IN-CU1:acp} de la Trayectoria Principal}{\refIdElem{IN-DAE-CU2}}
+
+

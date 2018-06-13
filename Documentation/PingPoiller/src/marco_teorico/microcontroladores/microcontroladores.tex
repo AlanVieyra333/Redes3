@@ -1,0 +1,194 @@
+%%==============================================================================
+% Microcontroladores
+%
+\section{Microcontroladores} 
+Los microcontroladores hoy en día ofrecen bastante funcionalidad, ya que se 
+pueden agregar otros dispositivos externos, ahorrar espacio y tiempo ya que 
+internamente tiene agregada una memoria e interfaces de puertos (ya sean 
+seriales o de entrada y salida) para que se puedan recibir datos externos. \\
+El microcontrolador es un integrado que contiene un microprocesador, memoria (de 
+programa y datos) y unidades de entrada/salida (puertos paralelos, 
+temporizadores, conversores Analógico/Digital (A/D), Digital/Analógico (D/A), 
+puertos serie, etc.) \cite{comparativa_micros}.
+
+%% Clasificación de microcontroladores
+%
+\subsection{Clasificación}
+Los microcontroladores se pueden clasificar de acuerdo con 
+\cite{comparativa_micros}:
+
+\begin{itemize}
+	\item Ancho de palabra: de 4, 8, 16, 32 bits.
+	\item Periféricos: A/D, D/A, Entrada/Salida,
+		timers, etc.
+	\item Especialidad: procesamiento de señales, video, comunicaciones, 
+		etc.
+\end{itemize}
+
+%% Arquitectura básica
+%
+\subsection{Arquitectura básica}
+Inicialmente los microcontroladores adoptaron una arquitectura Von Neumann, pero 
+en la actualidad la arquitectura usada es arquitectura Harvard. \\
+La arquitectura Von Neumann se caracteriza principalmente por tener una sola 
+memoria principal y datos en la cual se almacenan instrucciones de forma 
+indistinta. A dicha memoria se accede con un único bus de direcciones, control y 
+datos \cite{comparativa_micros, arqui_org_micros}. \\
+La arquitectura Harvard se caracteriza por tener la memoria de datos y de 
+instrucciones separadas, y tiene la ventaja de que existen buses respectivos 
+para cada memoria y se puede acceder desde el procesador simultáneamente sin 
+necesidad de esperar al siguiente ciclo de instrucción \cite{arqui_org_micros}. 
+\\
+El procesador interno del microcontrolador o CPU (Unit Control Processor) es el 
+elemento más importante, y se encarga de direccionar la memoria de 
+instrucciones, recibir la instrucción en curso y su decodificación para llevar a 
+cabo la ejecución de la operación que implica dicha instrucción, para finalmente 
+almacenar el resultado de toda la operación \cite{arqui_org_micros}. \\
+Existen tres tipos de instrucciones que caracterizan a los microprocesadores o 
+microcontroladores actuales \cite{arqui_org_micros}:
+
+\begin{itemize}
+	\item CISC (Conjunto conplejo de instrucciones): Se caracterizan por 
+	disponer de más de 80 instrucciones máquina, las cuáles son potentes y 
+	pueden requerir más ciclos de instrucción para su ejecución. Ofrecen al 
+	programador de realizar instrucciones como macros.
+	\item RISC (Conjunto reducido de instrucciones): Ofrecen conjunto de 
+	reducido de instrucciones y son simples, se ejecutan en un solo ciclo de 
+	instrucción. Permiten optimizar el hardware y software.
+	\item SISC (Conjunto simple de instrucciones): Estas instrucciones se 
+	destinan a aplicaciones bastantes concretas, el conjunto de 
+	instrucciones es reducido, además de ser específico, y se adaptan a las 
+	necesidades de la aplicación.
+\end{itemize}
+
+\textbf{Memoria} \\
+En los microcontroladores la memoria está integrada para almacenar datos e 
+instrucciones; ambas partes debería ser volátil y la otra no volátil. La parte 
+no volátil debe estar compuesta por una memoria ROM (memoria de solo lectura) y 
+la otra parte en la cual se almacenan variables, y datos, está integrada por una 
+memoria RAM (memoria de lectura y escritura de datos) 
+\cite{info_microcontroladores}. \\
+Las diferentes memorias que integran al microcontrolador, son: 
+
+\begin{itemize}
+	\item Memoria ROM con máscara. Memoria de solo lectura. 
+	\item OTP. Memoria programable en tiempo desde una computadora personal 
+	o PC.
+	\item EPROM. Memoria programable de sólo lectura borrable.
+	\item EEPROM. Memoria eléctricamente/borrable programable de solo 
+	lectura.
+	\item Memoria Flash.
+\end{itemize}
+
+\textbf{Puertos de Entrada/Salida (E/S)} \\
+Este tipo de interfaces se encargan de comunicar al microcontrolador con el 
+exterior, según los controladores de periféricos que posea cada modelo de 
+microcontrolador, las líneas de E/S se destinan para proporcionar soporte a 
+entradas, salidas y control \cite{info_microcontroladores}. \\
+Algunas interfaces de comunicación que posea cada modelo, entre ellas se 
+encuentran:
+
+\begin{itemize}
+	\item USART. Bus de comunicación serial asíncrono y síncrono.
+	\item USB. Bus universal serial de comunicación.
+	\item IIC (Inter-Integrated Circuit por sus siglas en 
+		inglés). Bus serie de datos.
+	\item CAN. Protocolo de comunicaciones basado en una topología bus para 
+		la transmisión de mensajes en entornos distribuidos.
+\end{itemize}
+
+\textbf{Recursos del microcontrolador} \\
+En referencia a \cite{info_microcontroladores}, algunos de los recursos 
+específicos con los que cuenta un microcontrolador son:
+
+\begin{itemize}
+	\item Temporizadores o Timers. \\
+		Llevan a cabo el control de periodos de tiempo y para llevar la 
+		cuenta de los acontecimientos que ocurren en el exterior. 
+	\item Perro guardián o Watch Dog Timer. \\
+		Es un temporizador cuando se bloquea automáticamente, provoca un 
+		reinicio. 
+	\item Protección ante fallo de alimentación. \\
+		Es un circuito cuyo objetivo es hacer reset en el 
+		microcontrolador el voltaje es inferior al voltaje de 
+		alimentación. 
+	\item Estado de bajo consumo. \\
+		Cuando el microcontrolador no está funcionando correctamente, 
+		existe proceso de bajo consumo para ahorrar energía y pasar al 
+		estado de bajo consumo o de reposo. 
+	\item Conversor Analógico/Digital. \\
+		En los microcontroladores se incorpora un circuito convertidor 
+		para lograr convertir señales
+		analógicas a digitales.
+	\item Convertidor Digital/Analógico. \\
+		Además, internamente en el microcontrolador se agrega un módulo 
+		convertidor de señales	digitales a analógicas para comunicarse 
+		con el exterior. 
+	\item Modulador de ancho de pulsos (PWM). \\
+		Son circuitos físicos que proporcionan salida de señales de 
+		amplitud variable. 
+\end{itemize}
+
+%% Aplicaciones
+%
+\subsection{Aplicaciones de los microcontroladores}
+El uso de los microcontroladores es cuando la aplicación no requiere tanta 
+potencia de cálculo. Algunas aplicaciones que se les brinda a los 
+microcontroladores:
+
+\begin{itemize}
+	\item Robótica.
+	\item Equipamiento informático.
+	\item Sistemas portátiles e informáticos.
+	\item Sector doméstico.
+\end{itemize}
+
+%% Fabricantes
+%
+\subsection{Fabricantes de microcontroladores}
+Desde el principio del microprocesador hasta la aparición de los primeros 
+microcontroladores ha habido diversos fabricantes, ya sea de Japón, EEUU, 
+entre otros, como son: Intel, Motorola, Hitachi, Philips, SGS-Thompson, National 
+Semiconductor, Zilog, Texas Instruments, Toshiba, Microchip, Atmel 
+\cite{comparativa_micros}. \\
+
+\begin{figure}[H]
+	\begin{center} 
+		\includegraphics[scale=0.5]
+		{images/doc/img_fabricantes_microcontroladores}
+		\caption{Fabricantes de microcontroladores.}
+	\end{center}
+\end{figure}
+
+De las cuales los principales fabricantes actuales se destacan los siguientes, 
+de acuerdo con el volumen de producción, y diversidad de modelos:
+
+\begin{itemize}
+	\item Microchip Technology Corp.
+	\item STMicroelectronics.
+	\item Atmel Corp.
+	\item Motorola Semiconductors Corp.
+\end{itemize}
+
+\begin{table}[H]
+	\centering 
+	\caption{Tabla de fabricantes con los microcontroladores respectivos
+		más comúnes que se pueden encontrar en diversas aplicaciones 
+		\cite{comparativa_micros}.}
+	\begin{tabular*}{0.75\textwidth}{@{\extracolsep{\fill}} |c|l|l|}
+		\hline
+		$\textbf{Empresa}$ & $\textbf{8 bits}$ & $\textbf{16 bits}$
+		\\\hline \hline
+		Atmel & \parbox[t]{3.5cm}{AVR (Mega, tiny), 89Sxxxx, 8051} & \\
+		\hline
+		Microchip & \parbox[t]{3.5cm}{10F2xx, 12Cxx, 12Fxx, 16Cxx, 16Fxx,
+		18Cxx, 18Fxx} &
+		\parbox[t]{2.8cm}{PIC24F, PIC24H, dsPIC30Fxx, dsPIC33Fxx} \\
+		\hline
+		STMicroelectronics & ST-62, ST-7 & \\
+		\hline
+		Freescale(Antes Motorola) & \parbox[t]{3.5cm}{68HC05, 68HC08,
+		68HC11,	HCS08} &
+		\parbox[t]{2.8cm}{68HC12, 68HCS12, 68HCSX12, 68HC16} \\\hline
+	\end{tabular*}
+\end{table}

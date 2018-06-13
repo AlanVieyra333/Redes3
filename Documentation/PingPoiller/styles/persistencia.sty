@@ -1,0 +1,571 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{styles/persistencia}[2017/04/27, v1.2 Plantilla para definir el estilo de la documentación]
+%=====================================================
+\RequirePackage{datatool}
+\RequirePackage{styles/theme}                      % Codificación de caracteres en UTF-8.
+\RequirePackage{pgfkeys}
+\RequirePackage{xstring}
+\RequirePackage{xifthen}
+
+%========================
+%Comando: \cdtSetCompileMode
+%Propósito: Cambiar el modo de compilación
+%========================
+\newcommand{\cdtVarCompileMode}{gendoc}%
+\newcommand{\cdtSetCompileMode}[1]{%
+		\renewcommand{\cdtVarCompileMode}{#1}%
+	}%
+
+%=====================================================
+% Base de datos Element
+\DTLnewdb{cdtDBElement}
+\DTLifdbempty{cdtDBElement}{
+    \DTLaddcolumn{cdtDBElement}{id}
+    \DTLaddcolumn{cdtDBElement}{name}
+}{
+	% nothing to do.
+}
+
+%=====================================================
+% Base de datos UpdatedElements
+\DTLloaddb{cdtDBElementConsulta}{db/cdtDBElement.csv}
+	\DTLaddcolumn{cdtDBElementConsulta}{id}
+    \DTLaddcolumn{cdtDBElementConsulta}{name}
+
+%=====================================================
+% Ultimo elemento creado
+\newcommand{\varLastElementId}{} % Actualmente no se usa
+
+% Indica cuando se esta trabajando un elemento dentro de otro elemento. Por Ejemplo: Entidades, Reglas de Negocio, Casos de Uso, etc.
+\newcommand{\varContextElementId}{}%
+
+\newcommand{\cdtSetContext}[1]{\renewcommand{\varContextElementId}{#1}}%
+
+%=====================================================
+%Base de Datos Reference
+\DTLnewdb{cdtDBReference}%
+\DTLifdbempty{cdtDBReference}{%
+    \DTLaddcolumn{cdtDBReference}{idElemento}%
+    \DTLaddcolumn{cdtDBReference}{idElementoRef}%
+}{%
+	% nothing to do.
+}%
+
+
+
+\DTLloaddb{cdtDBReferenceConsulta}{db/cdtDBReference.csv}
+	\DTLaddcolumn{cdtDBReferenceConsulta}{idElemento} % Identificador del elemento referenciado
+	\DTLaddcolumn{cdtDBReferenceConsulta}{idElementoRef}  % Identificador del elemento que hace referencia
+
+%=====================================================
+%Base de Datos Reference
+\DTLnewdb{cdtDBMSGReference}%
+\DTLifdbempty{cdtDBMSGReference}{%
+    \DTLaddcolumn{cdtDBMSGReference}{idElemento}%
+    \DTLaddcolumn{cdtDBMSGReference}{idElementoRef}%
+}{%
+	% nothing to do.
+}%
+
+
+
+\DTLloaddb{cdtDBMSGReferenceConsulta}{db/cdtDBMSGReference.csv}
+	\DTLaddcolumn{cdtDBMSGReferenceConsulta}{idElemento} % Identificador del elemento referenciado
+	\DTLaddcolumn{cdtDBMSGReferenceConsulta}{idElementoRef}  % Identificador del elemento que hace referencia
+
+%=====================================================
+%Base de Datos Reference
+\DTLnewdb{cdtDBIUReference}%
+\DTLifdbempty{cdtDBIUReference}{%
+    \DTLaddcolumn{cdtDBIUReference}{idElemento}%
+    \DTLaddcolumn{cdtDBIUReference}{idElementoRef}%
+}{%
+	% nothing to do.
+}%
+
+
+
+\DTLloaddb{cdtDBIUReferenceConsulta}{db/cdtDBIUReference.csv}
+	\DTLaddcolumn{cdtDBIUReferenceConsulta}{idElemento} % Identificador del elemento referenciado
+	\DTLaddcolumn{cdtDBIUReferenceConsulta}{idElementoRef}  % Identificador del elemento que hace referencia
+%======================================================
+%Base de Datos Reference
+\DTLnewdb{cdtDBCUReference}%
+\DTLifdbempty{cdtDBCUReference}{%
+    \DTLaddcolumn{cdtDBCUReference}{idElemento}%
+    \DTLaddcolumn{cdtDBCUReference}{idElementoRef}%
+}{%
+	% nothing to do.
+}%
+
+
+
+\DTLloaddb{cdtDBCUReferenceConsulta}{db/cdtDBCUReference.csv}
+	\DTLaddcolumn{cdtDBCUReferenceConsulta}{idElemento} % Identificador del elemento referenciado
+	\DTLaddcolumn{cdtDBCUReferenceConsulta}{idElementoRef}  % Identificador del elemento que hace referencia
+
+
+%=====================================================
+%Base de Datos Reference
+\DTLnewdb{cdtDBBRReference}%
+\DTLifdbempty{cdtDBBRReference}{%
+    \DTLaddcolumn{cdtDBBRReference}{idElemento}%
+    \DTLaddcolumn{cdtDBBRReference}{idElementoRef}%
+}{%
+	% nothing to do.
+}%
+
+
+
+\DTLloaddb{cdtDBBRReferenceConsulta}{db/cdtDBBRReference.csv}
+	\DTLaddcolumn{cdtDBBRReferenceConsulta}{idElemento} % Identificador del elemento referenciado
+	\DTLaddcolumn{cdtDBBRReferenceConsulta}{idElementoRef}  % Identificador del elemento que hace referencia
+
+%=====================================================
+% Base de datos Casos de Uso
+\DTLnewdb{cdtDBUseCase}
+\DTLifdbempty{cdtDBUseCase}{
+    \DTLaddcolumn{cdtDBUseCase}{id}
+    \DTLaddcolumn{cdtDBUseCase}{name}
+}{
+	% nothing to do.
+}
+
+\DTLloaddb{cdtDBUseCaseConsulta}{db/cdtDBUseCase.csv}
+	\DTLaddcolumn{cdtDBUseCaseConsulta}{id}
+    \DTLaddcolumn{cdtDBUseCaseConsulta}{name}
+
+\newcommand{\varLastUseCaseId}{}
+
+%=====================================================
+%=====================================================
+% Base de datos Mensajes
+\DTLnewdb{cdtDBMensaje}
+\DTLifdbempty{cdtDBMensaje}{
+    \DTLaddcolumn{cdtDBMensaje}{id}
+    \DTLaddcolumn{cdtDBMensaje}{name}
+}{
+	% nothing to do.
+}
+
+\DTLloaddb{cdtDBMensajeConsulta}{db/cdtDBMensaje.csv}
+	\DTLaddcolumn{cdtDBMensajeConsulta}{id}
+    \DTLaddcolumn{cdtDBMensajeConsulta}{name}
+
+\newcommand{\varLastMensajeId}{}
+
+%=====================================================
+%=====================================================
+% Base de datos Interfaces
+\DTLnewdb{cdtDBInterface}
+\DTLifdbempty{cdtDBInterface}{
+    \DTLaddcolumn{cdtDBInterface}{id}
+    \DTLaddcolumn{cdtDBInterface}{name}
+}{
+	% nothing to do.
+}
+
+\DTLloaddb{cdtDBInterfaceConsulta}{db/cdtDBInterface.csv}
+	\DTLaddcolumn{cdtDBInterfaceConsulta}{id}
+    \DTLaddcolumn{cdtDBInterfaceConsulta}{name}
+
+\newcommand{\varLastInterfaceId}{}
+
+%=====================================================
+% Base de datos Interfaces
+\DTLnewdb{cdtDBTerm}
+\DTLifdbempty{cdtDBTerm}{
+    \DTLaddcolumn{cdtDBTerm}{id}
+    \DTLaddcolumn{cdtDBTerm}{name}
+}{
+	% nothing to do.
+}
+
+\DTLloaddb{cdtDBTermConsulta}{db/cdtDBTerm.csv}
+	\DTLaddcolumn{cdtDBTermConsulta}{id}
+    \DTLaddcolumn{cdtDBTermConsulta}{name}
+
+\newcommand{\varLastTermId}{}
+
+
+\newcommand{\dbname}{cdtDBElement}
+
+
+
+%=====================================================
+% Registrar un elemento
+\newcommand{\cdtAddElement}[6]{%
+	\dtlexpandnewvalue%
+%	\message{cdtAddElement: Registrando '#1' en la BD...}%
+	\IfBeginWith{#1}{t}{%
+    	\DTLnewrow{cdtDBTerm}%
+        \DTLnewdbentry{cdtDBTerm}{id}{{#1}}%
+        \DTLnewdbentry{cdtDBTerm}{name}{{#3}}%
+	}{\IfSubStr{#1}{CU}{%
+    	\DTLnewrow{cdtDBUseCase}%
+        \DTLnewdbentry{cdtDBUseCase}{id}{{#1}}%
+        \DTLnewdbentry{cdtDBUseCase}{name}{{#3}}%
+	}{\IfSubStr{#1}{IU}{%
+    	\DTLnewrow{cdtDBInterface}%
+        \DTLnewdbentry{cdtDBInterface}{id}{{#1}}%
+        \DTLnewdbentry{cdtDBInterface}{name}{{#3}}%
+	}{\IfBeginWith{#1}{MSG}{%
+    	\DTLnewrow{cdtDBMensaje}%
+        \DTLnewdbentry{cdtDBMensaje}{id}{{#1}}%
+        \DTLnewdbentry{cdtDBMensaje}{name}{{#3}}%
+	}{%
+    	\DTLnewrow{cdtDBElement}%
+        \DTLnewdbentry{cdtDBElement}{id}{{#1}}%
+        \DTLnewdbentry{cdtDBElement}{name}{{#3}}%
+	}}}}%
+	\dtlnoexpandnewvalue
+%	\message{cdtAddElement: Ok.}
+}
+
+%=====================================================
+% Registrar una referencia a un elemento
+\newcommand{\cdtAddReference}[1]{%
+	\dtlexpandnewvalue%
+	\ifthenelse{\equal{}{\varContextElementId}}{%
+%Vacío		
+		}{%
+		%El elemento es Referenciado por un caso de Uso
+		\IfSubStr{#1}{CU}{%
+			\message{cdtAddReference: Registrando '#1' - '\varContextElementId' en la BD de referencias de Caso de Uso}%
+			\DTLnewrow{cdtDBCUReference}%
+			\DTLnewdbentry{cdtDBCUReference}{idElemento}{{#1}}%
+			\DTLnewdbentry{cdtDBCUReference}{idElementoRef}{{\varContextElementId}}%
+		}{%El elemento es Referenciado por una Regla de Negocio
+			\IfBeginWith{#1}{RN}{%
+			\message{cdtAddReference: Registrando '#1' - '\varContextElementId' en la BD de referencias de Reglas de Negocio}%
+			\DTLnewrow{cdtDBBRReference}%
+				\DTLnewdbentry{cdtDBBRReference}{idElemento}{{#1}}%
+				\DTLnewdbentry{cdtDBBRReference}{idElementoRef}{{\varContextElementId}}%
+			}{%
+				\IfSubStr{#1}{IU}{%
+					\message{cdtAddReference: Registrando '#1' - '\varContextElementId' en la BD de referencias de Pantallas}%
+					\DTLnewrow{cdtDBIUReference}%
+						\DTLnewdbentry{cdtDBIUReference}{idElemento}{{#1}}%
+						\DTLnewdbentry{cdtDBIUReference}{idElementoRef}{{\varContextElementId}}%
+				}{%
+					\IfBeginWith{#1}{MSG}{%
+					\message{cdtAddReference: Registrando '#1' - '\varContextElementId' en la BD de referencias de Mensajes}%
+					\DTLnewrow{cdtDBMSGReference}%
+						\DTLnewdbentry{cdtDBMSGReference}{idElemento}{{#1}}%
+						\DTLnewdbentry{cdtDBMSGReference}{idElementoRef}{{\varContextElementId}}%
+					}{%
+						\message{cdtAddReference: Registrando '#1' - '\varContextElementId' en la BD de referencias generica}%
+						\DTLnewrow{cdtDBReference}%
+							\DTLnewdbentry{cdtDBReference}{idElemento}{{#1}}%
+							\DTLnewdbentry{cdtDBReference}{idElementoRef}{{\varContextElementId}}%					
+					}%
+				}%
+			}%
+		}%
+	}%Fin de la condición que comprueba que el contexto es vacío
+	\dtlnoexpandnewvalue%
+}%Fin del Comando
+
+%============================================================
+%Comando: \referencedBy{}
+%Propósito: Realizar el mapeo de las referencias encontradas por una etiqueta
+%============================================================
+\newcommand{\referencedBy}[1]{%
+%	
+	\IfBeginWith{#1}{MSG}{\DTLgetvalueforkey{\varReferenceValue}{idElementoRef}{cdtDBMSGReferenceConsulta}{idElemento}{#1}}{\IfBeginWith{#1}{BR}{\DTLgetvalueforkey{\varReferenceValue}{idElementoRef}{cdtDBBRReferenceConsulta}{idElemento}{#1}}{%
+	%Vacio
+	}}%
+	%\DTLgetvalueforkey{\varReferenceValue}{idElementoRef}{cdtDBReferenceConsulta}{idElemento}{#1}%
+    	\DTLifnull{\varReferenceValue}{\item[Referenciado por:] Ningún elemento.}{%
+			\item[Referenciado por:]%
+			\IfBeginWith{#1}{MSG}{\@DTLforeach{cdtDBMSGReferenceConsulta}}{\@DTLforeach{cdtDBBRReferenceConsulta}}{%
+				\idElementoRef=idElementoRef,\idElemento=idElemento}{%
+					\ifthenelse{\equal{#1}{\idElemento}}{%
+						~{}\refIdElem{\idElementoRef}}{}%
+			}.%
+	}%
+}%
+
+%=====================================================
+% Genera la referencia
+\newcommand{\refElem}[1]{%
+\ifthenelse{\equal{\cdtVarCompileMode}{gendoc}}{%
+%
+%	\pgfkeysifdefined{#1}%
+%	{%
+%        \hyperlink{#1}{\pgfkeysvalueof{#1}}%
+%%		\message{refElem: La referencia '#1' es \pgfkeysvalueof{#1}}%
+%	}{%
+    	\IfBeginWith{#1}{t}{%
+    		\DTLgetvalueforkey{\varRefTermValue}{name}{cdtDBTermConsulta}{id}{#1}%
+    		\DTLifnull{\varRefTermValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{\varRefTermValue}%
+    				\pgfkeyssetvalue{#1}{\varRefTermValue}%
+%					\message{refElem: La 'Term' referencia '#1' es \varRefTermValue}%
+    			}%
+    	}{\IfSubStr{#1}{CU}{%
+        	\DTLnewrow{cdtDBUseCase}%
+    		\DTLgetvalueforkey{\varRefUCValue}{name}{cdtDBUseCaseConsulta}{id}{#1}%
+    		\DTLifnull{\varRefUCValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{\varRefUCValue}%
+    				\pgfkeyssetvalue{#1}{\varRefUCValue}%
+%					\message{refElem: La 'UC' referencia '#1' es \varRefUCValue}%
+    			}%
+    	}{\IfSubStr{#1}{IU}{%
+    		\DTLgetvalueforkey{\varRefIUValue}{name}{cdtDBInterfaceConsulta}{id}{#1}%
+    		\DTLifnull{\varRefIUValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{\varRefIUValue}%
+    				\pgfkeyssetvalue{#1}{\varRefIUValue}%
+%					\message{refElem: La 'IU' referencia '#1' es \varRefIUValue}%
+    			}%
+    	}{\IfBeginWith{#1}{MSG}{%
+    		\DTLgetvalueforkey{\varRefMsgValue}{name}{cdtDBMensajeConsulta}{id}{#1}%
+    		\DTLifnull{\varRefMsgValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{\varRefMsgValue}%
+    				\pgfkeyssetvalue{#1}{\varRefMsgValue}%
+%					\message{refElem: La 'MSG' referencia '#1' es \varRefMsgValue}%
+    			}%
+    	}{%
+    		\DTLgetvalueforkey{\varRefElemValue}{name}{cdtDBElementConsulta}{id}{#1}%
+    		\DTLifnull{\varRefElemValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{\varRefElemValue}%
+    				\pgfkeyssetvalue{#1}{\varRefElemValue}%
+%					\message{refElem: La 'Elem' referencia '#1' es \varRefElemValue}%
+    			}%
+    	}}}}%
+}{%
+\hyperlink{#1}{#1}%
+\cdtAddReference{#1}}%
+}
+
+
+%=====================================================
+% Registra y genera la referencia
+\newcommand{\refIdElem}[1]{%
+\ifthenelse{\equal{\cdtVarCompileMode}{gendoc}}{%
+%	\pgfkeysifdefined{#1}%
+%	{%
+%        \hyperlink{#1}{\pgfkeysvalueof{#1}}%
+%		\message{refIdElem: La referencia '#1' es \pgfkeysvalueof{#1}}%
+%	}{%
+    	\IfBeginWith{#1}{t}{%
+    		\DTLgetvalueforkey{\varRefTermValue}{name}{cdtDBTermConsulta}{id}{#1}%
+    		\DTLifnull{\varRefTermValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{{#1}~{}\varRefTermValue}%
+    				\pgfkeyssetvalue{#1}{\varRefTermValue}%
+%					\message{refElem: La 'Term' referencia '#1' es \varRefTermValue}%
+    			}%
+    	}{\IfSubStr{#1}{CU}{%
+    		\DTLgetvalueforkey{\varRefUCValue}{name}{cdtDBUseCaseConsulta}{id}{#1}%
+    		\DTLifnull{\varRefUCValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{{#1}~{}\varRefUCValue}%
+    				\pgfkeyssetvalue{#1}{\varRefUCValue}%
+%					\message{refElem: La 'UC' referencia '#1' es \varRefUCValue}%
+    			}%
+    	}{\IfSubStr{#1}{IU}{%
+    		\DTLgetvalueforkey{\varRefIUValue}{name}{cdtDBInterfaceConsulta}{id}{#1}%
+    		\DTLifnull{\varRefIUValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{{#1}~{}\varRefIUValue}%
+    				\pgfkeyssetvalue{#1}{\varRefIUValue}%
+%					\message{refElem: La 'IU' referencia '#1' es \varRefIUValue}%
+    			}%
+    	}{\IfBeginWith{#1}{MSG}{%
+    		\DTLgetvalueforkey{\varRefMsgValue}{name}{cdtDBMensajeConsulta}{id}{#1}%
+    		\DTLifnull{\varRefMsgValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{{#1}~{}\varRefMsgValue}%
+    				\pgfkeyssetvalue{#1}{\varRefMsgValue}%
+%					\message{refElem: La 'Msg' referencia '#1' es \varRefMsgValue}%
+    			}%
+    	}{%
+    		\DTLgetvalueforkey{\varRefElemValue}{name}{cdtDBElementConsulta}{id}{#1}%
+    		\DTLifnull{\varRefElemValue}%
+    			{{\color{red}{#1} (broken)}}%
+    			{%
+    				\hyperlink{#1}{{#1}~{}\varRefElemValue}%
+    				\pgfkeyssetvalue{#1}{\varRefElemValue}%
+					\message{refIdElem: La 'Elem' referencia '#1' es \varRefElemValue}%
+    			}%
+    	}}}}%
+}{%
+	\hyperlink{#1}{#1}%
+	\cdtAddReference{#1}%
+	}%
+}
+
+
+%=====================================================
+% Guarda las bases de datos
+\newcommand{\cdtSaveData}{
+	% purge database
+	\DTLsavedb{cdtDBElement}{db/cdtDBElement.csv}
+	\DTLsavedb{cdtDBTerm}{db/cdtDBTerm.csv}
+	\DTLsavedb{cdtDBMensaje}{db/cdtDBMensaje.csv}
+	\DTLsavedb{cdtDBUseCase}{db/cdtDBUseCase.csv}
+	\DTLsavedb{cdtDBInterface}{db/cdtDBInterface.csv}
+	\DTLsavedb{cdtDBReference}{db/cdtDBReference.csv}	
+	\DTLsavedb{cdtDBMSGReference}{db/cdtDBMSGReference.csv}
+	\DTLsavedb{cdtDBBRReference}{db/cdtDBBRReference.csv}
+	\DTLsavedb{cdtDBIUReference}{db/cdtDBIUReference.csv}
+	\DTLsavedb{cdtDBCUReference}{db/cdtDBCUReference.csv}
+}
+
+
+%%=====================================================
+%% Base de datos Element
+%\DTLloaddb{cdtDBElement}{db/cdtDBElement.csv}
+%\DTLifdbempty{cdtDBElement}{
+%    \DTLaddcolumn{cdtDBElement}{id}
+%    \DTLaddcolumn{cdtDBElement}{type}
+%    \DTLaddcolumn{cdtDBElement}{name}
+%    \DTLaddcolumn{cdtDBElement}{status}
+%    \DTLaddcolumn{cdtDBElement}{version}
+%    \DTLaddcolumn{cdtDBElement}{author}	
+%}{
+%	% nothing to do.
+%}
+
+
+%%=====================================================
+%% Base de datos UpdatedElements
+%\DTLnewdb{cdtDBUpdatedElement}
+%\DTLaddcolumn{cdtDBUpdatedElement}{id}
+
+
+%%=====================================================
+%% Ultimo subelemento creado
+%\newcommand{\varLastSubElementRefId}{}
+%\newcommand{\varLastSubElementId}{}
+
+%%=====================================================
+%% Registrar un elemento
+%\newcommand{\cdtAddElement}[6]{%
+%	\dtlexpandnewvalue%
+%	\message{cdtAddElement: buscando a '#1' en la BD...}
+%	\DTLgetvalueforkey{\varRefElemValue}{id}{cdtDBElement}{id}{#1}%
+%	\DTLifnull{\varRefElemValue}{%
+%		%\message{cdtAddElement: No se encontró, procedemos a registrarlo...}
+%		% Insert element	
+%    	\DTLnewrow{cdtDBElement}%
+%    	\DTLnewdbentry{cdtDBElement}{id}{{#1}}%
+%    	\DTLnewdbentry{cdtDBElement}{type}{{#2}}%
+%    	\DTLnewdbentry{cdtDBElement}{name}{{#3}}%
+%    	\DTLnewdbentry{cdtDBElement}{status}{{#4}}%
+%    	\DTLnewdbentry{cdtDBElement}{version}{{#5}}%
+%    	\DTLnewdbentry{cdtDBElement}{author}{{#6}}%
+%    	\DTLnewrow{cdtDBUpdatedElement}%
+%    	\DTLnewdbentry{cdtDBUpdatedElement}{id}{{#1}}%
+%		%\message{cdtAddElement: Listo.}
+%	}{%
+%		%\message{cdtAddElement: Error, el identificador '#1' está duplicado, favor de corregirlo.}
+%		\PackageError {cdtPersistencia} {\MessageBreak
+%		= C D T = C D T = C D T = C D T = C D T = C D T = C D T = C D T =\MessageBreak
+%		cdtAddElement: Error, el identificador '#1' est\'{a} duplicado.} {Revise el archivo que origin\'{o} el error y asigne otro identificador al elemento.}
+%		% Update element
+%		%\message{cdtAddElement: Encontrado, procedemos a actualizarlo...}
+%		\dtlgetrowindex{\varCurrentRow}{cdtDBElement}{\dtlcolumnindex{cdtDBElement}{id}}{#1}%
+%		%\message{cdtAddElement: El index del registro es \dtlcurrentrow}
+%		%\message{cdtAddElement: Posicionandose en el renglon...}
+%		\dtlgetrow{cdtDBElement}{\varCurrentRow}%
+%		%\message{cdtAddElement: Actualizando informacion...}
+%		\dtlupdateentryincurrentrow{id}{#1}%
+%		\dtlupdateentryincurrentrow{type}{#2}%
+%		\dtlupdateentryincurrentrow{name}{#3}%
+%		\dtlupdateentryincurrentrow{status}{#4}%
+%		\dtlupdateentryincurrentrow{version}{#5}%
+%		\dtlupdateentryincurrentrow{author}{#6}%	
+%		%\message{cdtAddElement: Ok, recombinando BD...}
+%		\dtlrecombine
+%    	\DTLnewrow{cdtDBUpdatedElement}%
+%    	\DTLnewdbentry{cdtDBUpdatedElement}{id}{{#1}}%
+%		%\message{cdtAddElement: Listo.}
+%	}%
+%	\renewcommand{\varLastElementId}{#1}%
+%	\dtlnoexpandnewvalue
+%	\message{cdtAddElement: Fin.}
+%}
+
+%%=====================================================
+%% Base de datos Reference
+%\DTLloaddb{cdtDBReference}{db/cdtDBReference.csv}
+%
+%\DTLifdbempty{cdtDBReference}{%
+%    \DTLaddcolumn{cdtDBReference}{id}%
+%    \DTLaddcolumn{cdtDBReference}{idRef}
+%}{
+%	% nothing to do.
+%}
+
+%%=====================================================
+%% Registra y genera la referencia
+%\newcommand{\refElem}[1]{%
+%	\DTLnewrow{cdtDBReference}%
+%	\DTLnewdbentry{cdtDBReference}{id}{{\varLastElementId}}%
+%	\DTLnewdbentry{cdtDBReference}{idRef}{#1}%
+%	\DTLgetvalueforkey{\varRefElemValue}{name}{cdtDBElement}{id}{#1}%
+%	\DTLifnull{\varRefElemValue}%
+%		{{\color{red}{#1} (broken)}}%
+%		{\hyperlink{#1}{\varRefElemValue}}%
+%}
+
+%%=====================================================
+%% Registra y genera la referencia
+%\newcommand{\refIdElem}[1]{%
+%	\DTLnewrow{cdtDBReference}%
+%	\DTLnewdbentry{cdtDBReference}{id}{{\varLastElementId}}%
+%	\DTLnewdbentry{cdtDBReference}{idRef}{#1}%
+%	\DTLgetvalueforkey{\varRefElemValue}{name}{cdtDBElement}{id}{#1}%
+%	\DTLifnull{\varRefElemValue}%
+%		{{\color{red}{#1} (broken)}}%
+%		{\hyperlink{#1}{{#1}~{}\varRefElemValue}}%
+%}
+
+%%=====================================================
+%% Guarda las bases de datos
+%\newcommand{\cdtSaveData}{
+%	% purge database
+%	\DTLforeach{cdtDBElement}{%
+%		\id=id%
+%	}{%
+%		\DTLgetvalueforkey{\varRefElemValue}{id}{cdtDBUpdatedElement}{id}{\id}%
+%		\DTLifnull{\varRefElemValue}{%
+%			% Element not in the document
+%			\DTLremovecurrentrow
+%		}{%
+%			% nothing to do.
+%		}%
+%	}
+%	\DTLsavedb{cdtDBElement}{db/cdtDBElement.csv}
+%	%\DTLsavedb{cdtDBReference}{db/cdtDBReference.csv}
+%}
+
+\newcommand{\disablePersistence}{
+	%\renewcommand{\cdtSaveData}{}
+	\renewcommand{\refIdElem}[1]{\hyperlink{##1}{{##1}}}
+	\renewcommand{\refElem}[1]{\hyperlink{##1}{{##1}}}
+	%\renewcommand{\cdtAddElement}[6]{}
+}
+
+
+%=====================================================
+%Comando: \eliminateDuplicities
+%Propósito: Eliminar duplicidades de las bases de datos de referencias
+%=====================================================
+%\newcommand{\eliminateDuplicities}{}

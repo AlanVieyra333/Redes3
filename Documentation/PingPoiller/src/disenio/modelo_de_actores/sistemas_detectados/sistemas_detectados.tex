@@ -1,0 +1,45 @@
+%===============================================================================
+% Sección: Sistemas detectados.
+%
+
+La figura \ref{img:dis:sistemas:detectados} muestra los sistemas involucrados en 
+el proyecto.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=.5\textwidth]
+		{images/doc/img_sistemas_detectados}
+		\caption{Sistemas involucrados.}
+		\label{img:dis:sistemas:detectados}
+	\end{center}
+\end{figure}
+
+%========== Responsable del Drone ======%
+\begin{actor}{Drone}{Drone}{Sistema que se comunicará con la aplicación web para intercambiar información referente al vuelo.}
+	\item[Responsabilidades:] \cdtEmpty
+	\begin{itemize}
+		\item Enviar posición geográfica actual.
+		\item Enviar su altura respecto a su posición inicial.
+		\item Enviar su nivel de batería.
+		\item Enviar su velocidad.
+		\item Enviar el estado del drone (en vuelo, aterrizado).
+		\item Recibir la posición geográfica de destino.
+	\end{itemize}
+	\item[Perfil:] Sistema autónomo.
+	\item{Cantidad:} Para fines de este prototipo se requiere el uso de un solo drone.
+	\item{Estatus:} En revisión.
+\end{actor}
+
+%========== Responsable del Servidor ======%
+\begin{actor}{Servidor}{Servidor}{El servidor es un actor en el que tendrá comunicación con el drone, con el fin de estar al pendiente de la información que recibe por parte del drone, y además para enviar datos de GPS por parte del cliente.}
+	\item[Responsabilidades:] \cdtEmpty
+	\begin{itemize}
+		\item Enviar la posición geográfica de destino.
+		\item Recibir datos generales del drone.
+		\item Mostrar información relevante del vuelo.
+	\end{itemize}
+	\item[Perfil:] Desarrollado en python usando diversos frameworks tales como DJango y Angular.
+	\item{Cantidad:} Para la interacción con varios clientes y un drone, se requiere el uso de un solo servidor.
+	\item{Estatus:} En revisión.
+\end{actor}
+

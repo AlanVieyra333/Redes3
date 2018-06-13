@@ -1,0 +1,240 @@
+% Caso de uso: Editar datos personales.
+% Autor(es): Landa Aguirre Rafael
+% 	     Alan Vieyra Fernando
+%	     Olvera Pérez Víctor David
+% Fecha: 12 - May - 2018
+%
+
+\begin{UseCase}{AS-CU3.2}{Editar perfil}{
+		Permite al \refElem{Cliente} actualizar o modificar en caso de 
+		que lo requiera sus datos de cuenta de usuario, en el que podrá
+		modificar su correo electrónico, nombre de usuario, contraseña.
+	}
+	\UCccitem{Versión}{0.1}
+	\UCccsection{Datos para el control Interno}
+	\UCccitem{Elaboró}{
+		\begin{Titemize}
+			\Titem Alan Fernando Rincón Vieyra.
+			\Titem Rafael Landa Aguirre.
+		\end{Titemize}
+	}
+	\UCccitem{Revisó}{----}
+	\UCccitem{Estatus}{Revisado.}
+	\UCccitem{Fecha del último estatus}{11 de Mayo de 2018}
+	\UCccitem{Observaciones}{Ninguna.}
+	\UCsection{Atributos}
+	% V.0.1.
+	\UCitem{Actor}{\refElem{Cliente}}
+	% V.0.1.
+	\UCitem{Propósito}{
+		Modificar sus datos de perfil, con el fin de que el usuario 
+		actualice su información en el momento que requiera.
+	}
+	% V.0.1.
+	\UCitem{Entradas}{%
+		\begin{Titemize}
+			\Titem \refElem{Usuario.nombreUsuario}.
+			\Titem \refElem{Cliente.correoElectronico}.
+			\Titem \refElem{Usuario.contrasenia}.	
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Origen}{
+		\begin{Titemize}
+			\Titem \ioEscribir
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Salidas}{Ninguno.}
+	% V.0.1.
+	\UCitem{Destino}{Pantalla.}
+	% V.0.1.
+	\UCitem{Precondiciones}{%
+		\begin{Titemize}
+			\Titem Haber estado registrado en el sistema.
+			\Titem Haber iniciado sesión.
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Postcondiciones}{
+		Actualización de la información de acceso.
+	}
+	% V.0.1.
+	\UCitem{Reglas de Negocio}{%
+		\begin{Titemize}
+			\Titem \refIdElem{RN-MON-N01}
+			\Titem \refIdElem{RN-MON-N03}
+			\Titem \refIdElem{RN-MON-N04}
+			\Titem \refIdElem{RN-MON-N05}
+			\Titem \refIdElem{RN-MON-N13}
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Errores}{%
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{Cuando el usuario no introduce todos 
+			los campos marcados con asterisco,}{el sistema muestra 
+			el mensaje \refIdElem{MSG6} y regresa al paso 
+			\ref{AS-CU3:introducirNombreDeUsuario} de la trayectoria 
+			principal.}
+			
+			\Titem \UCerr{Dos}{Cuando el campo nombre de usuario no 
+			cumple con el formato de dato solicitado,}{se muestra el 
+			mensaje \refIdElem{MSG8} y regresa al paso 
+			\ref{AS-CU3:introducirNombreDeUsuario} de la 
+			trayectoria principal.}
+			
+			\Titem \UCerr{Tres}{Cuando el campo correo electrónico no 
+			cumple con el formato de dato solicitado,}{se muestra el 
+			mensaje \refIdElem{MSG9} y regresa al paso 
+			\ref{AS-CU3:introducirCorreoElectronico} de la 
+			trayectoria principal.}
+			
+			\Titem \UCerr{Cuatro}{Cuando la contraseña no 
+			cumple con el formato de dato solicitado,}{se muestra el 
+			mensaje \refIdElem{MSG10} y regresa al paso 
+			\ref{AS-CU3:introducirContrasenia} de la trayectoria 
+			principal.}
+			
+			\Titem \UCerr{Cinco}{Cuando el campo confirmar 
+			contraseña no cumple con el formato de dato solicitado,}
+			{se muestra el mensaje \refIdElem{MSG10} y regresa al 
+			paso \ref{AS-CU3:introducirConfirmarContrasenia} de 
+			la trayectoria 
+			principal.}
+		
+			\Titem \UCerr{Seis}{Cuando se introduce una contraseña 
+			que no coincide con la confirmación de la misma,}{el 
+			sistema muestra el mensaje \refIdElem{MSG15} y regresa 
+			al paso \ref{AS-CU21:introducirContrasenia} de la 
+			trayectoria principal.}
+		\end{Titemize}				
+	}
+	% V.0.1.
+	\UCitem{Viene de}{Ninguno.}
+	% V.0.1.
+	\UCitem{Disparadores}{%
+		Requiere actualizar sus datos de acceso.
+	}
+	% V.0.1.
+	\UCitem{Condiciones de Término}{%
+		Se muestra el mensaje \refIdElem{MSG1} indicando 
+		que se han actualizado sus datos de acceso al sistema.
+	}
+	% V.0.1.
+	\UCitem{Efectos Colaterales}{Actualización de información de acceso al 
+		sistema.
+	}
+	\UCitem{Datos sensibles}{
+		\begin{Titemize}
+			\Titem \refElem{Usuario.nombreUsuario}.
+			\Titem \refElem{Cliente.correoElectronico}.
+			\Titem \refElem{Usuario.contrasenia}.	
+		\end{Titemize}
+	}
+\end{UseCase}
+
+%Trayectoria Principal : Happy Path
+
+\begin{UCtrayectoria}
+	% V.0.1.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Ver perfil} de la 
+	pantalla sesión del usuario: \refIdElem{GV-IU1}, \refIdElem{GV-IU2}, 
+	\refIdElem{GH-IU1}.
+	% V.0.1.
+	\UCpaso Muestra la pantalla \refIdElem{AS-IU5}.
+	% V.0.1.
+	\UCpaso [\UCactor] \label{AS-CU3:introducirNombreDeUsuario} 
+	Introducir información del campo correoElectronico.
+	% V.0.1.
+	\UCpaso [\UCactor] \label{AS-CU3:introducirCorreoElectronico} 
+	Introducir información del campo correoElectronico.
+	% V.0.1.
+	\UCpaso [\UCactor] \label{AS-CU3:introducirContrasenia} Introducir 
+	información del campo contraseña.
+	% V.0.1.
+	\UCpaso [\UCactor] \label{AS-CU3:introducirConfirmarContrasenia} 
+	Introducir información del campo confirmar contraseña.
+	% V.0.1.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Actualizar información}.
+	% V.0.1.
+	\UCpaso Verifica que no falte información en los campos marcados con 
+	asterisco, con base a la regla de negocio \refIdElem{RN-MON-N01}. 
+	\refErr{Uno}
+	% V.0.1.
+	\UCpaso Verifica si los campos del usuario cumplen con los formatos 
+	requeridos de acuerdo a las reglas de negocio \refIdElem{RN-MON-N03}, 
+	\refIdElem{RN-MON-N04}, \refIdElem{RN-MON-N05} y 
+	\refIdElem{RN-MON-N13}. \refErr{Dos} 
+	\refErr{Tres} \refErr{Cuatro} \refErr{Cinco}
+	% V.0.1.
+	\UCpaso Verifica que la contraseña y la confirmación de contraseña sean 
+	identicas, de acuerdo a la regla de negocio: \refIdElem{RN-MON-N13}. 
+	\refErr{Seis}
+	% V.0.1.
+	\UCpaso Recibir campos: correo electrónico, nombre de usuario, 
+	contraseña.
+	% V.0.1.
+	\UCpaso Obtener usuario por correo electrónico.
+	% V.0.1.
+	\UCpaso Verificar que no exista duplicado de información de acuerdo a 
+	las reglas de negocio: \refIdElem{RN-MON-N11}. \refTray{A}
+	% V.0.1.
+	\UCpaso \label{AS-CU3:actualizarCampos} Actualizar los campos: 
+	nombre de usuario, correo electrónico, contraseña en base de datos.
+	% V.0.1.
+	\UCpaso Muestra el mensaje: \refIdElem{MSG1} en la pantalla 
+	\refIdElem{AS-IU5}, con los siguientes parámetros:
+	
+	\begin{itemize}
+		\item $ARTICULO$: 'La'.
+		\item $OPERACION$: 'actualización de datos de usuario'.
+	\end{itemize}
+\end{UCtrayectoria}
+
+
+%-------------------------- Trayectoria Alternativa A ---------------------------------
+
+\begin{UCtrayectoriaA}{A}{No existe duplicado de información}
+	% V.0.1.
+	\UCpaso Verificar si no existe correo electrónico duplicado de acuerdo a 
+	la regla de negocio: \refIdElem{RN-MON-N11}. \refTray{B}
+	% V.0.1.
+	\UCpaso \label{AS-CU3A:noDuplicados} Verificar si no existe nombre de 
+	usuario duplicado de acuerdo a la regla de negocio: 
+	\refIdElem{RN-MON-N12}. \refTray{C}
+	% V.0.1.
+	\UCpaso Continúa en el paso \ref{AS-CU3:actualizarCampos} de la 
+	trayectoria principal.
+\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa B --------------------------------- 
+
+\begin{UCtrayectoriaA}{B}{Duplicado de correo electrónico}
+	% V.0.1.
+	\UCpaso Muestra el mensaje \refIdElem{MSG2}en pantalla 
+	\refIdElem{AS-IU5}, con el siguiente parámetro:
+	\begin{itemize}
+		\item $OPERACION$: 'verificación de correo electrónico'.
+	\end{itemize}
+	
+	%Existe un correo electronico
+	%previamente registrado. Favor de verificar correo electrónico.
+	% V.0.1.
+	\UCpaso Continúa con el paso \ref{AS-CU3A:noDuplicados} de la 
+	trayectoria alterna \textbf{A}.
+\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa C --------------------------------- 
+
+\begin{UCtrayectoriaA}[Termina caso de uso]{C}{Duplicado de nombre de usuario}
+	% V.0.1.
+	\UCpaso Muestra el mensaje \refIdElem{MSG2} en pantalla 
+	\refIdElem{AS-IU5}, con el siguiente parámetro:
+	\begin{itemize}
+		\item $OPERACION$: 'verificación de nombre de usuario'.
+	\end{itemize}
+	
+	%Existe un nombre de usuario
+	%previamente registrado. Favor de verificar nombre de usuario.
+\end{UCtrayectoriaA}

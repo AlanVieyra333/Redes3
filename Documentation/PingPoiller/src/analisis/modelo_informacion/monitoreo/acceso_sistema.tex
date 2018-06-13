@@ -1,0 +1,96 @@
+% !TEX root = ../index_analisis.tex
+% Modelo de información del módulo de acceso al sistema.
+% Autor(es): Landa Aguirre Rafael
+% 	     Alan Vieyra Fernando
+%	     Olvera Pérez Víctor David
+% Fecha: 23 - Mayo - 2018
+%
+
+\subsection{Acceso al Sistema}
+
+En este paquete se encuentran todas las entidades y datos del \refElem{Cliente} de acuerdo a la toma de
+requerimientos del proyecto.
+
+% USUARIO
+\begin{cdtEntidad}[Persona registrada en el sistema.]{Usuario}{Usuario}
+	\brAttr{nombreUsuario}{Nombre de usuario}{string}{Específica el nombre de usuario para identificar a cada usuario dentro del sistema.}{\datRequerido}
+	
+	\brAttr{contrasenia}{Contraseña}{string}{Específica la contraseña del usuario para ingresar al sistema.}{\datRequerido}
+	
+	%\brRel{\brRelAgregation}{\refElem{UnidadAcademica}}{Una Unidad Académica {\bf opera} durante uno o más Ciclo Escolar y esto es de acuerdo a los programas académicos que ofrece y sus modalidades.}% 
+	
+\end{cdtEntidad}
+
+% CLIENTE
+\begin{cdtEntidad}[Persona encargada de solicitar el vuelo de un drone.]{Cliente}{Cliente}
+	\brAttr{nombre}{Nombre}{string}{Específica el nombre del cliente para mostrarlo en su sesión.}{\datRequerido}
+	
+	\brAttr{correoElectronico}{Correo electrónico}{string}{Específica el correo electrónico del cliente donde se le enviarán mensajes.}{\datRequerido}
+	
+	\cdtEntityRelSection
+	
+	\brRel{\brRelGeneralization}{\refElem{Usuario}}{Un cliente {\bf es} un usuario del sistema.}
+	
+	\brRel{\brRelComposition}{\refElem{Vuelo}}{Un cliente puede {\bf solicitar} uno o más vuelos.}
+	
+\end{cdtEntidad}
+
+\subsection{Gestión de vuelo}
+En este paquete se encuentran todas aquellas entidades y datos necesarios para \refElem{Vuelo}, el cual se
+en cargará de almacenar información relacionada con el drone y las solicitudes del usuario.
+
+% VUELO 
+\begin{cdtEntidad}[Vuelo realizado por el usuario.]{Vuelo}{Vuelo}
+	\brAttr{id}{Id}{int}{Identificador de vuelo, que permitirá identificar vuelos individuales sin duplicados.}{\datRequerido}
+	\brAttr{fecha}{Fecha}{string}{Fecha en que el \refElem{Usuario} realiza una solicitud de vuelo.}{\datRequerido}
+	\brAttr{hora}{Hora}{string}{Hora en que el \refElem{Usuario} realiza una solicitud de vuelo.}{\datRequerido}
+	\brAttr{destino}{Destino}{\refElem{PosicionGeografica}}{Destino que establecerá el \refElem{Usuario} al finalizar el proceso de solicitud de vuelo.}{\datRequerido}
+	\brAttr{ruta}{Ruta}{\refElem{PosicionGeografica}[]}{Ruta seguida por el drone en su proceso de vuelo.}{\datRequerido}
+	
+	\cdtEntityRelSection
+	
+	%\brRel{\brRelGeneralization}{\refElem{Usuario}}{Un cliente {\bf es} un usuario del sistema.}
+	
+	\brRel{\brRelComposition}{\refElem{Drone}}{Un vuelo se { \bf comunica } con un drone.}
+	
+	\brRel{\brRelComposition}{\refElem{Cliente}}{Un vuelo es {\bf solicitado } por un cliente.}
+	
+\end{cdtEntidad}
+
+\subsection{Comunicación con Drone}
+En este paquete se encuentran todas aquellas entidades que se encargarán de monitorear la información del drone, 
+así como ver estado del drone, posición geográfica, altura relativa, nivel de batería, velocidad.
+
+% DRONE 
+\begin{cdtEntidad}[Encargado de monitorear los datos arrojados por el drone.]{Drone}{Drone}
+	\brAttr{posicion}{Posicion}{\refElem{PosicionGeografica}}{Posicion actual del drone en su estado de vuelo.}{\datRequerido}
+	\brAttr{altura}{Altura}{float}{Altura relativa respecto al nivel de tierra.}{\datRequerido}
+	\brAttr{nivelBateria}{Nivel de Batería}{float}{Nivel de batería en el drone (volts).}{\datRequerido}
+	\brAttr{velocidad}{Velocidad}{float}{Velocidad resultante como suma vectorial de las velocidades vertical y horizontal.}{\datRequerido}
+	\brAttr{orientacion}{Orientacion}{\refElem{Orientacion}}{Número de grados respecto a si eje Norte.}{\datRequerido}
+	
+	\brAttr{estado}{Estado}{boolean}{True = Si el drone está en estado de vuelo; False = Si el drone está en estado de aterrizaje o en tierra.}{\datRequerido}
+	
+	\cdtEntityRelSection
+	
+	\brRel{\brRelComposition}{\refElem{Drone}}{Un drone es {\bf parte de} un vuelo.}
+	
+\end{cdtEntidad}
+
+\subsection{Utilidades}
+En este paquete se encuentran entidades u objetos que ayudarán a abstraer información relativa al drone, además, de 
+su relación de utilidad respecto a otros paquetes.
+
+% POSICION_GEOGRAFICA 
+\begin{cdtEntidad}[Encargado de identificar la posición geográfica del Drone en su estado de vuelo.]{PosicionGeografica}{PosicionGeografica}
+	\brAttr{latitud}{Latitud}{float}{Latitud geográfica del drone.}{\datRequerido}
+	\brAttr{longitud}{longitud}{float}{Longitud geográfica del drone.}{\datRequerido}
+	
+\end{cdtEntidad}
+
+% ORIENTACION 
+\begin{cdtEntidad}[Orientación respecto a su eje norte.]{Orientacion}{Orientacion}
+	\brAttr{x}{X}{float}{Valor respecto al compass del eje X del drone.}{\datRequerido}
+	\brAttr{y}{Y}{float}{Valor respecto al compass del eje Y del drone.}{\datRequerido}
+	\brAttr{z}{Z}{float}{Valor respecto al compass del eje Z del drone.}{\datRequerido}
+\end{cdtEntidad}

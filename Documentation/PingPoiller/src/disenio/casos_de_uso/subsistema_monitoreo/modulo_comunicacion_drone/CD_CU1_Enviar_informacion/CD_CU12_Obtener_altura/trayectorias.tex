@@ -1,0 +1,162 @@
+% Indice de Caso de uso: Obtener altura.
+% Autor(es): Landa Aguirre Rafael
+% 	     Alan Vieyra Fernando
+%	     Olvera Pérez Víctor David
+% Fecha: 04 - May - 2018
+%
+
+\begin{UseCase}{CD-CU1.2}{Obtener altura}{
+		Permite al \refElem{Cliente} registrarse en el sistema para tener acceso a éste, permitiéndole solicitar al drone que realice un vuelo.
+	}
+	\UCccitem{Versión}{0.1}
+	\UCccsection{Datos para el control Interno}	
+	\UCccitem{Elaboró}{Nombre}
+	\UCccitem{Supervisó}{Nombres}
+	\UCccitem{Estatus}{\TODO[Por revisar]}
+	\UCccitem{Fecha del último estatus}{07 de Mayo de 2018}
+	\UCccitem{Observaciones}{Ninguna}
+	\UCsection{Atributos}
+	% V.0.1 TODO.
+	\UCitem{Actor}{
+		\begin{Titemize}
+			\Titem \refElem{DAEJefeDeRegistro}
+			\Titem \refElem{DAEAdministradorDeRegistro}
+		\end{Titemize}
+	}
+	% V.0.1 TODO.
+	\UCitem{Propósito}{
+		\begin{Titemize}
+			\Titem Consultar el histórico de Ciclos escolares anteriores.
+			\Titem Monitorear y gestionar lo relativo al ciclo escolar actual.
+			\Titem Planear lo relativo a el ciclo escolar próximo.
+		\end{Titemize}
+	}
+	% V.0.1 TODO.
+	\UCitem{Entradas}{%
+		\begin{Titemize}
+			\Titem \refElem{tModalidad}.
+			\Titem \refElem{CicloEscolar}.	
+		\end{Titemize}	
+	}
+	% V.0.1 TODO.
+	\UCitem{Origen}{%
+		\begin{Titemize}
+			\Titem \ioSeleccionar
+			\Titem \ioEscribir
+		\end{Titemize}
+	}
+	% V.0.1 TODO.
+	\UCitem{Salidas}{%
+		\begin{Titemize}
+			\Titem El nombre de las Modalidades registradas en el sistema (vea \refElem{tModalidad}).
+			\Titem El nombre de los Ciclos escolares disponibles para selección (vea \refElem{CicloEscolar.clave}).
+			\Titem \refIdElem{MSG1}.
+		\end{Titemize}	
+	}
+	% V.0.1 TODO.
+	\UCitem{Destino}{Pantalla}
+	% V.0.1 TODO.
+	\UCitem{Precondiciones}{%
+		\begin{Titemize}
+			\Titem \textbf{Sistematizada:} Que exista por lo menos un ciclo escolar.
+			\Titem \textbf{Sistematizada:} Que exista por lo menos una Modalidad.
+		\end{Titemize}
+	}
+	% V.0.1 TODO.
+	\UCitem{Postcondiciones}{%
+		\begin{Titemize}
+			\Titem La modalidad y Ciclo escolar seleccionados determinarán toda la información y operaciones para los demás casos de uso de este módulo.
+		\end{Titemize}
+	}
+	% V.0.1 TODO.
+	\UCitem{Reglas de Negocio}{%
+		\begin{Titemize}
+			\Titem \refIdElem{BR-IN-N005}
+		\end{Titemize}
+	}
+	% V.0.1 TODO.
+	\UCitem{Errores}{%
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{Cuando no se encuentran  \textbf{Ciclos escolares} o {\bf Modalidades} registrados,}{ el sistema muestra el mensaje \refIdElem{MSG3} para Modalidades y Ciclos escolares en la pantalla \refIdElem{IN-DAE-UI1} y termina el caso de uso.}
+			
+			\Titem \UCerr{Dos}{Cuando los campos ingresados no cumplen con el tipo de dato solicitado,}{se muestra el mensaje \refIdElem{MSG7} y regresa al paso \ref{IN-DAE-CU3.1:Ingresa} de la trayectoria principal.}
+		\end{Titemize}				
+	}
+	% V.0.1 TODO.
+	\UCitem{Viene de}{\refIdElem{CU-Login} o \refIdElem{IN-DAE-UI2}}
+	% V.0.1 TODO.
+	\UCitem{Disparadores}{%
+		\begin{Titemize}
+			\Titem Requiere consultar el histórico de Ciclos escolares anteriores.
+			\Titem Requiere monitorear y gestionar lo relativo al ciclo escolar actual.
+			\Titem Requiere planear lo relativo a el ciclo escolar próximo.
+		\end{Titemize}
+	} 
+	% V.0.1 TODO.
+	\UCitem{Condiciones de Término}{%
+		Se despliega una tabla donde se visualiza el nombre de la nueva configuración, así como su frecuencia y periodicidad de ejecución.}
+	% V.0.1 TODO.
+	\UCitem{Efectos Colaterales}{Ninguno}
+	\UCitem{Datos sensibles}{Ninguno}
+\end{UseCase}
+
+
+%Trayectoria Principal : Happy Path
+
+\begin{UCtrayectoria}
+	% V.0.1 TODO.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Definir Calendario} de la pantalla \refIdElem{IN-DAE-UI2} o de la pantalla \refIdElem{IN-DAE-UI2a} para definir un Calendario Escolar.
+	% V.0.1 TODO.
+	\UCpaso Obtiene los acrónimos de las Unidades Académicas que no tiene definido un Calendario Escolar en el Ciclo Escolar y modalidad seleccionados. \refErr{Uno}	
+	% V.0.1 TODO.
+	\UCpaso Muestra la pantalla \refIdElem{IN-DAE-UI2.1} con la información obtenida.
+	% V.0.1 TODO.
+	\UCpaso [\UCactor] Selecciona las unidades académicas que serán asociadas al Calendario Escolar.\refTray{A}  \refTray{G}  \refTray{H}
+	% V.0.1 TODO.
+	\UCpaso Verifica si los periodos indicados en las actividades establecidas por omisión cuenten con la duración recomendada con base a la regla de negocio \refIdElem{BR-IN-S001}. \refErr{Dos}\refErr{Tres}
+	% V.0.1 TODO.
+	\UCpaso Verifica si los periodos indicados para las evaluaciones ordinarias con base en la regla de negocio  \refIdElem{BR-IN-S002}   \refErr{Cuatro}
+	% V.0.1 TODO.
+	\UCpaso \label{IN-DAE-CU2.1:dia}Muestra los días establecidos en las actividades definidas en el calendario.
+	% V.0.1 TODO.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Registrar}.\refTray{B} \refTray{C}
+	% V.0.1 TODO.
+	\UCpaso Verifica que no falte la información en los  campos obligatorios. \refErr{Cinco}
+	% V.0.1 TODO.
+	\UCpaso Envía la notificación a los Jefes de Control Escolar de las Unidades Académicas que están asociadas al Calendario Escolar.
+	% V.0.1 TODO.
+	\UCpaso Muestra la pantalla \refIdElem{IN-DAE-UI2} con los cronogramas actualizados.
+\end{UCtrayectoria}
+
+
+%-------------------------- Trayectoria Alternativa A ---------------------------------
+
+\begin{UCtrayectoriaA}{A}{Se requiere seleccionar todas las unidades académicas }
+	% V.0.1 TODO.
+	\UCpaso [\UCactor] 	Presiona el botón \IUbutton{Seleccionar Todo} de la pantalla \refIdElem{IN-DAE-UI2.1}.
+	% V.0.1 TODO.
+	\UCpaso Continúa en el paso \ref{IN-DAE-CU2.1:sel}  de la trayectoria principal.
+\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa F --------------------------------- 
+
+\begin{UCtrayectoriaA}[Termina caso de uso]{F}{Se requiere Cancelar la operación}
+	% V.0.1 TODO.
+	\UCpaso [\UCactor] 	Presiona el botón \IUbutton{Cancelar} de la pantalla \refIdElem{IN-DAE-UI2.1}.
+	% V.0.1 TODO.
+	\UCpaso Muestra la pantalla \refIdElem{IN-DAE-UI2} o \refIdElem{IN-DAE-UI2a} 
+\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa G --------------------------------- 
+
+\begin{UCtrayectoriaA}{G}{Se requiere agregar una Unidad Académica}
+	% V.0.1 TODO.
+	\UCpaso [\UCactor]  Selecciona el acrónimo de Unidad Académica que se requiere agregar a la asociación del calendario. 
+	% V.0.1 TODO.
+	\UCpaso Sigue en el paso \ref{IN-DAE-CU2.1:sel}  de la trayectoria principal.
+\end{UCtrayectoriaA}
+
+
+\subsubsection{Puntos de extensión}
+
+\UCExtensionPoint{Gestionar Calendario Escolar}{El actor requiere Gestionar Calendario Escolar}{ Paso \ref{DAE-IN-CU1:acp} de la Trayectoria Principal}{\refIdElem{IN-DAE-CU2}}

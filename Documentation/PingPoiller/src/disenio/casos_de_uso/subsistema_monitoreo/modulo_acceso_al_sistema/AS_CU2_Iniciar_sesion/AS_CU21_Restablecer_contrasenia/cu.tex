@@ -1,0 +1,238 @@
+% Caso de uso: Restablecer contraseña.
+% Autor(es): Landa Aguirre Rafael
+% 	     Alan Vieyra Fernando
+%	     Olvera Pérez Víctor David
+% Fecha: 04 - May - 2018
+%
+
+\begin{UseCase}{AS-CU2.1}{Restablecer contraseña}{
+		Permite al \refElem{Cliente} realizar un proceso de recuperación 
+		de contraseña cuanto éste lo requiera o en una situación de 
+		olvido.
+	}
+	\UCccitem{Versión}{0.1}
+	\UCccsection{Datos para el control Interno}	
+	\UCccitem{Elaboró}{
+		\begin{Titemize}
+			\Titem Alan Fernando Rincón Vieyra.
+			\Titem Landa Aguirre Rafael.
+		\end{Titemize}
+	}
+	\UCccitem{Revisó}{}
+	\UCccitem{Estatus}{\TODO{Por modificar.}}
+	\UCccitem{Fecha del último estatus}{11 de Mayo de 2018}
+	\UCccitem{Observaciones}{Ninguna.}
+	\UCsection{Atributos}
+	% V.0.1.
+	\UCitem{Actor}{\refElem{Cliente}}
+	% V.0.1.
+	\UCitem{Propósito}{
+		Recuperar el acceso al sistema o solicitar un cambio de 
+		contraseña.
+	}
+	% V.0.1.
+	\UCitem{Entradas}{%
+		\begin{Titemize}
+			\Titem \refElem{Cliente.correoElectronico}.
+			\Titem \refElem{Usuario.contrasenia}.
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Origen}{
+		\begin{Titemize}
+			\Titem \ioEscribir
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Salidas}{%
+		\begin{Titemize}
+			\Titem \refIdElem{MSG1}.
+			\Titem \refIdElem{MSG6}.
+			\Titem \refIdElem{MSG9}.
+			\Titem \refIdElem{MSG10}.
+		\end{Titemize}	
+	}
+	% V.0.1.
+	\UCitem{Destino}{Pantalla}
+	% V.0.1.
+	\UCitem{Precondiciones}{Haber estado previamente registrado.}
+	% V.0.1.
+	\UCitem{Postcondiciones}{%
+		\begin{Titemize}
+			\Titem Mostrar mensaje de confirmación \refIdElem{MSG1}.
+			\Titem Haber enviado correo electrónico de recuperación.
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Reglas de Negocio}{%
+		\begin{Titemize}
+			\Titem \refIdElem{RN-MON-N04}.
+			\Titem \refIdElem{RN-MON-N05}.
+			%% Agregar RN de confimar contraseña y contraseña
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Errores}{%
+		\begin{Titemize}
+			\Titem \UCerr{Uno}{Cuando el usuario no introduce todos 
+			los campos marcados con asterisco,}{el sistema muestra 
+			el mensaje \refIdElem{MSG6} y regresa al paso 
+			\ref{AS-CU21:introducirCorreoElectronico} de la 
+			trayectoria principal.}
+			
+			\Titem \UCerr{Dos}{Cuando el campo correo electrónico no 
+			cumple con el formato de dato solicitado,}{se muestra el 
+			mensaje \refIdElem{MSG9} y regresa al paso 
+			\ref{AS-CU21:introducirCorreoElectronico} de la 
+			trayectoria principal.}
+			
+			\Titem \UCerr{Tres}{Cuando la nueva contraseña no 
+			cumple con el formato de dato solicitado,}{se muestra el 
+			mensaje \refIdElem{MSG10} y regresa al paso 
+			\ref{AS-CU21:introducirContrasenia} de la trayectoria 
+			principal.}
+			
+			\Titem \UCerr{Cuatro}{Cuando el campo confirmar nueva
+			contraseña no cumple con el formato de dato solicitado,}
+			{se muestra el mensaje \refIdElem{MSG10} y regresa al 
+			paso \ref{AS-CU21:introducirConfirmarContrasenia} de 
+			la trayectoria 
+			principal.}
+			\Titem \UCerr{Cinco}{Cuando los campos nueva contraseña 
+			y confirmar nueva contraseña no coinciden }{se muestra 
+			el mensaje \refIdElem{MSG15} y regresa al paso 
+			\ref{AS-CU21:introducirContrasenia} de la trayectoria 
+			principal.}
+		\end{Titemize}				
+	}
+	% V.0.1.
+	\UCitem{Viene de}{\refIdElem{AS-CU1}}
+	% V.0.1.
+	\UCitem{Disparadores}{
+		Requiere solicitar un cambio de datos de acceso	para ingresar el 
+		sistema.
+	} 
+	% V.0.1.
+	\UCitem{Condiciones de Término}{%
+		\begin{Titemize}
+			\Titem Se muestra el mensaje \refIdElem{MSG1} indicando 
+			que se han actualizado sus datos de acceso al sistema.
+			\Titem El actor \refElem{Cliente} verifica el correo 
+			electrónico recibido.
+		\end{Titemize}
+	}
+	% V.0.1.
+	\UCitem{Efectos Colaterales}{
+		\begin{Titemize}
+			\Titem El usuario registrado puede acceder al sistema.
+			\Titem Actualización de la información de registro.
+		\end{Titemize}
+	}
+	\UCitem{Datos sensibles}{
+		\begin{Titemize}
+			\Titem \refElem{Cliente.correoElectronico}.
+			\Titem \refElem{Usuario.contrasenia}.
+		\end{Titemize}
+	}
+\end{UseCase}
+
+%Trayectoria Principal : Happy Path
+
+\begin{UCtrayectoria}
+	% V.0.1.
+	\UCpaso [\UCactor] Presiona el enlance \underline{\textit{“¿Ha olvidado 
+	su contraseña?”}} de la pantalla \refIdElem{AS-IU3}.
+	% V.0.1.
+	\UCpaso Muestra la pantalla \refIdElem{AS-IU4}.
+	% V.0.1.
+	\UCpaso [\UCactor] \label{AS-CU21:introducirCorreoElectronico} Introducir 
+	información del campo: correo electrónico.
+	% V.0.1.
+	\UCpaso [\UCactor] \label{AS-CU21:introducirContrasenia} Introducir 
+	información del campo: nueva contraseña.
+	% V.0.1.
+	\UCpaso [\UCactor] \label{AS-CU21:introducirConfirmarContrasenia} 
+	Introducir información del campo: confirmar nueva contraseña.
+	% V.0.1.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Enviar solicitud}.
+	% V.0.1.
+	\UCpaso Verifica que no existan campos obligatorios vacíos. \refErr{Uno}
+	% V.0.1.
+	\UCpaso Verifica si los campos del usuario cumplen con los formatos 
+	requeridos de acuerdo a las reglas de negocio \refIdElem{RN-MON-N04}, 
+	\refIdElem{RN-MON-N05}. \refErr{Dos} \refErr{Tres} \refErr{Cuatro}
+	% V.0.1.
+	\UCpaso Recibir campos: correo electrónico, nueva contraseña.
+	% V.0.1.
+	\UCpaso Verifica si los campos: nueva contraseña y confirmar nueva 
+	contraseña coinciden. \refErr{Cinco} %% Agregar RN respectiva
+	% V.0.1.
+	\UCpaso Verifica si el campo correo electronico está previamente 
+	registrado en el sistema. \refTray{A}
+	% V.0.1.
+	\UCpaso Actualizar el campo contraseña en base de datos.
+	% V.0.1.
+	\UCpaso Enviar correo electrónico con la información de contraseña 
+	actualizada. \refTray{B}
+	% V.0.1.
+	\UCpaso Muestra el mensaje: \refIdElem{MSG1} en la pantalla 
+	\refIdElem{AS-IU4}, con los siguientes parámetros:
+	
+	\begin{itemize}
+		\item $ARTICULO$: 'La'.
+		\item $OPERACION$: 'actualizar'.
+	\end{itemize}
+	% V.0.1.
+	\UCpaso Muestra el mensaje: \refIdElem{MSG1} en la pantalla 
+	\refIdElem{AS-IU4}, con los siguientes parámetros:
+	
+	\begin{itemize}
+		\item $ARTICULO$: 'La'.
+		\item $OPERACION$: 'enviar correo'.
+	\end{itemize}
+	
+	%Un correo electrónico de 
+	%recuperación se ha enviado a: $<<correo-del-usuario>>$ exitosamente. 
+	%Favor de verificarlo.
+	
+	% V.0.1.
+	\UCpaso [\UCactor] Abre una nueva pantalla en el navegador.
+	% V.0.1.
+	\UCpaso [\UCactor] Accede a su correo electrónico.
+	% V.0.1.
+	\UCpaso [\UCactor] Verifica el correo electrónico recibido.
+\end{UCtrayectoria}
+
+
+%-------------------------- Trayectoria Alternativa A ---------------------------------
+
+\begin{UCtrayectoriaA}{A}{Correo electrónico no registrado}
+	% V.0.1.
+	\UCpaso Muestra el mensaje: \refIdElem{MSG2} en pantalla 
+	\refIdElem{AS-IU4}, con el siguiente parámetro:
+	\begin{itemize}
+		\item $OPERACION$: 'correo electrónico inexistente'.
+	\end{itemize}
+	
+	%Su correo electrónico no ha 
+	%sido registrado en el sistema. Favor de verificarlo.
+	
+	% V.0.1.
+	\UCpaso Regresar al paso \ref{AS-CU21:introducirCorreoElectronico} de 
+	la trayectoria principal.
+\end{UCtrayectoriaA}
+
+%-------------------------- Trayectoria Alternativa B ---------------------------------
+
+\begin{UCtrayectoriaA}[Termina caso de uso]{B}{Error al enviar correo electrónico}
+	% V.0.1.
+	\UCpaso Muestra el mensaje de error: \refIdElem{MSG2} en pantalla 
+	\refIdElem{AS-IU4}, con el siguiente parámetro:
+	\begin{itemize}
+		\item $OPERACION$: 'enviar correo electrónico'.
+	\end{itemize}
+	
+	%Su correo 
+	%electrónico no ha sido enviado. Favor de intentarlo más tarde.
+\end{UCtrayectoriaA}
+
