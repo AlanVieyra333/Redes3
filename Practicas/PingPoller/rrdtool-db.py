@@ -8,7 +8,13 @@ tDay = tHour * 24
 fname = 'ping.rrd'
 step = 1  # Time interval betwen every muestra. (1 sec)
 time_average = 1  # Time interval to average. (1 sec)
-hostname = sys.argv[1].replace('.', '_')
+hostnames = sys.argv[1:]
+hostname1 = hostnames[0].replace('.', '_')
+hostname2 = hostnames[1].replace('.', '_')
+hostname3 = hostnames[2].replace('.', '_')
+hostname4 = hostnames[3].replace('.', '_')
+hostname5 = hostnames[4].replace('.', '_')
+hostname6 = hostnames[5].replace('.', '_')
 ################################################################################
 stime = int(time.time())
 duration = tHour
@@ -34,7 +40,12 @@ ret = rrdtool.create(
     fname,
     '--start', str(stime),
     '--step', str(step),
-    'DS:ping_%s:GAUGE:3:U:U' % hostname,
+    'DS:ping_%s:GAUGE:3:U:U' % hostname1,
+    'DS:ping_%s:GAUGE:3:U:U' % hostname2,
+    'DS:ping_%s:GAUGE:3:U:U' % hostname3,
+    'DS:ping_%s:GAUGE:3:U:U' % hostname4,
+    'DS:ping_%s:GAUGE:3:U:U' % hostname5,
+    'DS:ping_%s:GAUGE:3:U:U' % hostname6,
     'RRA:AVERAGE:0.5:%d:%d' % (time_average, duration / time_average),
 )
 
