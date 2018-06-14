@@ -29,4 +29,4 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Descripci\IeC {\'o}n}{5}{section*.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Prueba P01-P1: rrdtool instalado}{6}{section*.7}
+\contentsline {subsubsection}{Prueba P01-P2: Ping Poller}{8}{section*.7}

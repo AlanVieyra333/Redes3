@@ -1,9 +1,9 @@
-[1] Config.pm:302> INFO - This is Biber 2.11
+[2] Config.pm:302> INFO - This is Biber 2.11
 [2] Config.pm:305> INFO - Logfile is '.build/reporte_tecnico.blg'
-[99] biber:313> INFO - === mié jun 13, 2018, 16:55:46
-[153] Biber.pm:371> INFO - Reading '.build/reporte_tecnico.bcf'
-[371] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[403] Utils.pm:193> WARN - The file '.build/reporte_tecnico.bcf' does not contain any citations!
-[421] bbl.pm:617> INFO - Writing '.build/reporte_tecnico.bbl' with encoding 'UTF-8'
-[422] bbl.pm:720> INFO - Output to .build/reporte_tecnico.bbl
-[422] Biber.pm:110> INFO - WARNINGS: 1
+[97] biber:313> INFO - === mié jun 13, 2018, 21:02:07
+[150] Biber.pm:371> INFO - Reading '.build/reporte_tecnico.bcf'
+[367] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[399] Utils.pm:193> WARN - The file '.build/reporte_tecnico.bcf' does not contain any citations!
+[418] bbl.pm:617> INFO - Writing '.build/reporte_tecnico.bbl' with encoding 'UTF-8'
+[418] bbl.pm:720> INFO - Output to .build/reporte_tecnico.bbl
+[418] Biber.pm:110> INFO - WARNINGS: 1
