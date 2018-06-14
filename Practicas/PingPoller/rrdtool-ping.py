@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 import rrdtool, time, sys
 from ping import ping
 

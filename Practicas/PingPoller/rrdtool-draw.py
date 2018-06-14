@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 import rrdtool , time , random, sys
 
 tMinute = 60

@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python
 import sys, rrdtool, time
 
 tMinute = 60
@@ -34,7 +34,7 @@ ret = rrdtool.create(
     fname,
     '--start', str(stime),
     '--step', str(step),
-    'DS:ping_%s:GAUGE:3s:U:U' % hostname,
+    'DS:ping_%s:GAUGE:3:U:U' % hostname,
     'RRA:AVERAGE:0.5:%d:%d' % (time_average, duration / time_average),
 )
 
