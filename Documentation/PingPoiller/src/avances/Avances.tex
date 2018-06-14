@@ -12,12 +12,12 @@ Instalar las herramientas necesarias para el desarrollo del ping poller.
 \begin{itemize}
 	\item Instalar python 2.7.9\\
 		\begin{lstlisting}[language=bash]
-			#> apt-get update
-			#> apt-get install gcc python=2.7.9-1 python-pip librrd-dev libpython-dev
+			$ apt-get update
+			$ apt-get install gcc python=2.7.9-1 python-pip librrd-dev libpython-dev
 		\end{lstlisting}
 	\item Instalar rrdtool.\\
 		\begin{lstlisting}[language=bash]
-			#> pip install rrdtool
+			$ pip install rrdtool
 		\end{lstlisting}
 \end{itemize}
 
@@ -50,27 +50,127 @@ Realizar un programa en python que mande ping's a los dispositivos conectados en
 			
 			# Verify packet recived.
 			packets_recived = int(re.search(
-				r'([\w|\s|.|\(|\)|\-|:|,\|=|\n]*)([0|1])( received)', ping_response)
-			.group(2))
+				r'([\w|\s|.|\(|\)|\-|:|,\|=|\n]*)([0|1])( received)',
+				ping_response).group(2))
 			
 			if (packets_recived == 1):
 				time = int(re.search(
-					r'([\w|\s|.|\(|\)|\-|:|,\|=|\n]*)(time=)([0-9]*)( ms)', ping_response)
-				.group(3))
+					r'([\w|\s|.|\(|\)|\-|:|,\|=|\n]*)(time=)([0-9]*)([.|0-9]*)( ms)',
+					ping_response).group(3))
 				return time
 			else:
 				return -1
 	\end{lstlisting}
-	\item Instalar rrdtool.\\
-	\begin{lstlisting}[language=bash]
-	#> pip install rrdtool
-	\end{lstlisting}
+	
+	\item {\bf rrdtool-db.py} Programa encargado de crear la base de datos round robin donde se almacenará el tiempo de retardo de los ping's realizados a una ip determinada.\\
+		\begin{lstlisting}[language=python]
+			#!/bin/python
+			import sys, rrdtool, time
+			
+			tMinute = 60
+			tHour = tMinute * 60
+			tDay = tHour * 24
+			#####################################################
+			fname = 'ping.rrd'
+			step = 1  # Time interval betwen every muestra. (1 sec)
+			time_average = 1  # Time interval to average. (1 sec)
+			hostname = sys.argv[1].replace('.', '_')
+			#####################################################
+			stime = int(time.time())
+			duration = tHour
+			
+			# Un archivo round robin, que promedia las muestras de 5s durante una hora.
+			ret = rrdtool.create(
+				fname,
+				'--start', str(stime),
+				'--step', str(step),
+				'DS:ping_%s:GAUGE:3:U:U' % hostname,
+				'RRA:AVERAGE:0.5:%d:%d' % (time_average, duration / time_average),
+			)
+			
+			if ret:
+				print rrdtool.error()
+		\end{lstlisting}
+		Uso:\\
+		\begin{lstlisting}[language=bash]
+			$ ./rrdtool-db.py <IP>
+		\end{lstlisting}
+		
+	\item {\bf rrdtool-ping.py} Programa encargado de actualizar la base de datos round robin con el tiempo de retardo de un ping realizado a una ip determinada.\\
+		\begin{lstlisting}[language=python]
+			#!/usr/bin/python
+			import rrdtool, time, sys
+			from ping import ping
+			
+			fname = 'ping.rrd'
+			hostname = sys.argv[1]
+			
+			#######################################################
+			
+			ping_time = ping(hostname)
+
+			# Se actualiza la bd con valores de [0, 1000] ms cada segundo.
+			rrdtool.update(
+				fname,
+				'-t', 'ping_%s' % hostname.replace('.', '_'),
+				'%d:%d' % (int(time.time()), ping_time)
+			)
+		\end{lstlisting}
+		Uso:\\
+		\begin{lstlisting}[language=bash]
+			$ ./rrdtool-ping.py <IP>
+		\end{lstlisting}
+
+	\item {\bf rrdtool-draw.py} Programa encargado de crear una grafica del tiempo de retardo de los ping's realizados a una ip determinada durante los ultimos 10 minutos.\\
+		\begin{lstlisting}[language=python]
+			#!/usr/bin/python
+			import rrdtool , time , random, sys
+			
+			tMinute = 60
+			tHour = tMinute * 60
+			tDay = tHour * 24
+			##########################################################
+			hostname = sys.argv[1].replace('.', '_')
+			fname = 'ping.rrd'
+			gfname = 'ping_' + hostname + '.png'
+			duration = 10 * tMinute
+			step = 1  # One second.
+			time_average = 10  # Time interval to average. (10 sec)
+			##########################################################
+			dpoints = duration / step
+			etime = int(time.time())
+			stime = etime - dpoints
+			
+			rrdtool.graph(
+				gfname,
+				'--imgformat', 'PNG',
+				'-w', '1100',
+				'-h', '300',
+				'--title', 'Pings',
+				'--vertical-label', 'Tiempo (s)',
+				'--lower-limit', '0',
+				'--start', str(stime - 1),
+				'--end', str(etime + 1),
+				'DEF:rate=%s:ping_%s:AVERAGE' % (fname, hostname),
+				'CDEF:ms=rate',
+				'VDEF:msmax=ms,MAXIMUM',
+				'VDEF:msavg=ms,AVERAGE',
+				'VDEF:msmin=ms,MINIMUM',
+				'LINE1:ms#FF0000:Retardo',
+				r'GPRINT:msmax:Max\: %6.1lf ms',
+				r'GPRINT:msavg:Prom\: %6.1lf ms',
+				r'GPRINT:msmin:Min\: %6.1lf ms\l',
+			)
+		\end{lstlisting}
+		Uso:\\
+		\begin{lstlisting}[language=bash]
+			$ ./rrdtool-draw.py <IP>
+		\end{lstlisting}
 \end{itemize}
 
-\newpage
-\begin{prueba}[{\bf Sistema:} Topología de red, {\bf Módulo:} Ping Poller]{P01-P1}{rrdtool instalado}
-	\Pitem{Verificar paquetes instalados}
-	\pregunta{¿Se instaló python 2.7.9?}{X}{}{Ninguna.}
-	\pregunta{¿Se instaló pip?}{X}{}{Ninguna.}
-	\pregunta{¿Se instaló rrdtool?}{X}{}{Me marcaba errores de haders y error en gcc. La solución fue reinstalar gcc.}
+\begin{prueba}[{\bf Sistema:} Topología de red, {\bf Módulo:} Ping Poller]{P01-P2}{Ping Poller}
+	\Pitem{Verificar que se grafque correctamente.}
+	\pregunta{¿Al ejecutar el programa rrdtool-db.py se creó el archivo ping.rrd?}{X}{}{Ninguna.}
+	\pregunta{¿Se ejecuta correctamente el programa rrdtool-ping.py?}{X}{}{Ninguna.}
+	\pregunta{¿Al ejecutar el programa rrdtool-draw.py se creó el archivo ping\_$<IP>$.png?}{X}{}{Ninguna.}
 \end{prueba}
