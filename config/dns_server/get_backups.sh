@@ -1,7 +1,9 @@
 #!/bin/sh
 
+FOLDER=/root/Redes3/config/router
+
 # Comprobar numero de argumentos.
-if [ -z "$1"] ; then
+if [ -z "$1" ]; then
 	echo "Uso: ./get_backups.sh <IP> <NAME_ROUTER>"
 	exit 1
 fi
@@ -24,5 +26,17 @@ bye
 EOF
 
 # Renombrar y mover el respaldo del enrutador.
-mv mydata.tgz Redes3/config/router/${2}/mydata_$(date +%Y-%m-%d_%H-%M-%S).tgz
+if [ ! -f $FOLDER/${2}/mydata.tgz ]; then
+	mv mydata.tgz $FOLDER/${2}
+	#echo "Respaldo guardado"
+else
+	if cmp mydata.tgz $FOLDER/${2}/mydata.tgz; then
+		echo "Respaldo existente"
+		rm mydata.tgz
+	else
+		mv $FOLDER/${2}/mydata.tgz $FOLDER/${2}/mydata_$(date +%Y-%m-%d_%H-%M-%S).tgz
+		mv mydata.tgz $FOLDER/${2}
+		echo "Nuevo respaldo"
+	fi
+fi
 #tar -zcvf /root/ftp/quagga-1_$(date +%Y-%m-%d_%H-%M-%S).tar.gz /etc/quagga/
