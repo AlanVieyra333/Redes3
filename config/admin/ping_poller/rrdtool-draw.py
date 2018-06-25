@@ -1,13 +1,15 @@
 #!/usr/bin/python
 import rrdtool , time , random, sys
 
+DIR='/root/ping_poller'
+
 tMinute = 60
 tHour = tMinute * 60
 tDay = tHour * 24
 ################################################################################
 hostname = sys.argv[1].replace('.', '_')
-fname = 'ping_' + hostname + '.rrd'
-gfname = 'ping_' + hostname + '.png'
+fname = DIR + '/ping_' + hostname + '.rrd'
+gfname = DIR + '/ping_' + hostname + '.png'
 duration = 10 * tMinute
 step = 1  # One second.
 time_average = 10  # Time interval to average. (10 sec)
