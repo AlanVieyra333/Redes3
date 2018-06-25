@@ -6,7 +6,7 @@ tHour = tMinute * 60
 tDay = tHour * 24
 ################################################################################
 hostname = sys.argv[1].replace('.', '_')
-fname = 'ping.rrd'
+fname = 'ping_' + hostname + '.rrd'
 gfname = 'ping_' + hostname + '.png'
 duration = 10 * tMinute
 step = 1  # One second.
