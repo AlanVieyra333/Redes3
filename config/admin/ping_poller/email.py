@@ -21,7 +21,7 @@ def sendEmail(hostname, option):
       '--server', 'smtp.gmail.com:587',
       '--auth', 'LOGIN',
       '--auth-user', email_from,
-      '--auth-password', 'JeBuS666',
+      '--auth-password', '********',
       '-tls'],
     stdout=subprocess.PIPE
   )
